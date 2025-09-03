@@ -1,15 +1,17 @@
-import React from 'react'
-import '../assets/css/header.css'
+import React from 'react';
+import '../assets/css/header.css';
+import graduateCap from '../assets/images/graduate-hat.png';
+
 
 
 function Header() {
   return (
-    <main>
-        <div className='container'>
+    <div className='header'>
+        <div className='header-container'>
             <Logo />
             <Username />
         </div>
-    </main>
+    </div>
   )
 }
 
@@ -17,6 +19,7 @@ function Logo() {
     return (
         <div className='logo'>
             <p>SAGE<span>LY</span></p>
+            <img src={graduateCap} alt="" />
         </div>
     )
 }

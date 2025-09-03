@@ -1,4 +1,4 @@
-main {
+.header {
     width: 100%;
     height: 80px;
     position: fixed;
@@ -8,7 +8,7 @@ main {
     box-shadow: 0 2px 15px rgba(0,0,0,0.1);
 }
 
-.container {
+.header-container {
     height: 100%;
     display: flex;
     justify-content: space-between;
@@ -16,18 +16,69 @@ main {
     padding: 0px 35px;
 }
 
-.logo {
+.header .logo {
     color: var(--main);
     font-size: 1.8rem;
     font-weight: 700;
 }
 
-.logo span {
+.header .logo img {
+    height: 24px;
+    position: fixed;
+    top: 8px;
+    left: 135px;
+}
+
+.header .logo span {
     color: var(--second);
 }
 
-.username {
+.header .username {
     color: var(--main);
     font-size: 1rem;
     font-weight: 600;
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        height: 50px;
+    }
+
+    .header .logo {
+        font-size: 1.4rem;
+    }
+    
+    .header .username {
+        font-size: 0.85rem;
+    }
+
+    .header-container {
+        padding: 0px 25px;
+    }
+
+    .header .logo img {
+        height: 20px;
+        left: 102px;
+        top: 0px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .header .logo {
+        font-size: 1.2rem;
+    }
+    
+    .header .username {
+        font-size: 0.8rem;
+    }
+
+    .header-container {
+        padding: 0px 15px;
+    }
+
+    .header .logo img {
+        height: 18px;
+        left: 81px;
+        top: 3px;
+    }
 }
