@@ -1,0 +1,33 @@
+main {
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    background-color: white;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 35px;
+}
+
+.logo {
+    color: var(--main);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.logo span {
+    color: var(--second);
+}
+
+.username {
+    color: var(--main);
+    font-size: 1rem;
+    font-weight: 600;
+}

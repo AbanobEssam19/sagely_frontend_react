@@ -1,9 +1,16 @@
 import { RouterProvider } from "react-router-dom";
 import { router } from "./routes";
+import Header from "./components/Header";
+import "./assets/css/main.css";
 
 function App() {
   return (
-    <RouterProvider router={router} />
+    <>
+      <Header />
+      <div className="main-container">
+        <RouterProvider router={router} />
+      </div>
+    </>
   );
 }
 
