@@ -6,19 +6,26 @@
 
 .main-container {
     margin-top: 80px;
-    position: absolute;
-    height: calc(100% - 80px);
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 250px;
+    height: 100%;
 }
 
 .main-container .content {
-    margin-left: 250px;
     padding: 30px;
     height: 100%;
 }
 
 @media screen and (max-width: 768px) {
-    .main-container .content {
+    .content-container {
         margin-left: 50px;
     }
 
