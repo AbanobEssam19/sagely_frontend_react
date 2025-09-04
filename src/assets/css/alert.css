@@ -1,0 +1,51 @@
+.nf-toast {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  min-width: 250px;
+  padding: 1rem 1.5rem;
+  border-radius: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+  color: var(--second);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+  animation: slideIn 0.3s ease-out;
+}
+
+.nf-toast-success {
+  background-color: #28a745; /* Classic Success Green */
+  color: #fff;
+}
+
+
+.nf-toast-error {
+  background-color: #b00020; /* deep red for errors */
+}
+
+.nf-toast-info {
+  background-color: var(--third);
+  color: #111;
+}
+
+.nf-toast-close {
+  margin-left: 1rem;
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

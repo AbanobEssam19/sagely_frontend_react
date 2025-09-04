@@ -1,12 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../assets/css/signup.css";
 import logo from "../assets/images/logo.png";
 import graduationHat from "../assets/images/graduate-hat.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useRef } from "react";
-
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUser } from "../states/APIs/apis";
+import NotFoundPage from "./NotFound";
+import Loading from "./Loading";
+import { showAlert } from "../states/reducers/alertSlice";
 
 function Signup() {
+  const dispatch = useDispatch();
+
+  const user = useSelector((state) => state.userData.data);
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let token = localStorage.getItem("token");
+    const fetchData = async () => {
+      await dispatch(fetchUser(token));
+      setLoading(false);
+    };
+
+    fetchData();
+  }, [dispatch]);
+
+  if (loading) return <Loading />;
+
+  if (user) {
+    return <NotFoundPage />;
+  }
+
   return (
     <div className="signup">
       <div className="signup-container">
@@ -45,17 +71,19 @@ function RightSide() {
   const confirmPasswordRef = useRef(null);
 
   const emailRegex = /^[\w.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&#]{8,}$/;
+  const passwordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&#]{8,}$/;
   const phoneRegex = /^01[0-2,5]{1}[0-9]{8}$/;
 
   const checkName = () => {
-    if (name == "") {
-        nameRef.current.style.display = "block";
-        return false;
+    const words = name.trim().split(" ").filter(Boolean);
+    if (words.length < 3) {
+      nameRef.current.style.display = "block";
+      return false;
     }
     nameRef.current.style.display = "none";
     return true;
-  }
+  };
 
   const checkEmail = () => {
     if (!emailRegex.test(email)) {
@@ -64,7 +92,7 @@ function RightSide() {
     }
     emailRef.current.style.display = "none";
     return true;
-  }
+  };
 
   const checkPhone = () => {
     if (!phoneRegex.test(phone)) {
@@ -73,7 +101,7 @@ function RightSide() {
     }
     phoneRef.current.style.display = "none";
     return true;
-  }
+  };
 
   const checkPassword = () => {
     if (!passwordRegex.test(password)) {
@@ -82,15 +110,52 @@ function RightSide() {
     }
     passwordRef.current.style.display = "none";
     return true;
-  }
+  };
 
   const checkConfirmPassword = () => {
-    if (password != confirmPassword) {
+    if (password !== confirmPassword) {
       confirmPasswordRef.current.style.display = "block";
       return false;
     }
     confirmPasswordRef.current.style.display = "none";
     return true;
+  };
+
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
+  async function signup() {
+    if (
+      !checkName() ||
+      !checkEmail() ||
+      !checkPhone() ||
+      !checkPassword() ||
+      !checkConfirmPassword()
+    )
+      return;
+
+    const res = await fetch("/api/signup", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        phoneNumber: phone,
+        password,
+      }),
+    });
+
+    if (res.ok) {
+      dispatch(showAlert({message: "Account created successfully!", type: "success"}));
+      navigate("/login");
+    }
+    else {
+      dispatch(showAlert({ type: "error", message: "Signup failed." }));
+    }
   }
 
   return (
@@ -101,7 +166,7 @@ function RightSide() {
       </div>
 
       <div className="form">
-        <label for="fullname">Full Name</label>
+        <label htmlFor="fullname">Full Name</label>
         <input
           type="text"
           id="fullname"
@@ -110,9 +175,11 @@ function RightSide() {
           onChange={(e) => setName(e.target.value)}
           onBlur={checkName}
         />
-        <p className="errorMsg" ref={nameRef}>Name can not be empty!</p>
+        <p className="errorMsg" ref={nameRef}>
+          Full name must be at least three words!
+        </p>
 
-        <label for="email">Email</label>
+        <label htmlFor="email">Email</label>
         <input
           type="email"
           id="email"
@@ -121,9 +188,11 @@ function RightSide() {
           onChange={(e) => setEmail(e.target.value)}
           onBlur={checkEmail}
         />
-        <p className="errorMsg" ref={emailRef}>Email is not valid!</p>
+        <p className="errorMsg" ref={emailRef}>
+          Email is not valid!
+        </p>
 
-        <label for="phone">Phone Number</label>
+        <label htmlFor="phone">Phone Number</label>
         <input
           type="text"
           id="phone"
@@ -132,9 +201,11 @@ function RightSide() {
           onChange={(e) => setPhone(e.target.value)}
           onBlur={checkPhone}
         />
-        <p className="errorMsg" ref={phoneRef}>Phone number is not valid!</p>
+        <p className="errorMsg" ref={phoneRef}>
+          Phone number is not valid!
+        </p>
 
-        <label for="password">Password</label>
+        <label htmlFor="password">Password</label>
         <input
           type="password"
           id="password"
@@ -143,9 +214,12 @@ function RightSide() {
           onChange={(e) => setPassword(e.target.value)}
           onBlur={checkPassword}
         />
-        <p className="errorMsg" ref={passwordRef}>Password must be at least 8 characters, include at least one uppercase letter, lowercase letter, and digit.</p>
+        <p className="errorMsg" ref={passwordRef}>
+          Password must be at least 8 characters, include at least one uppercase
+          letter, lowercase letter, and digit.
+        </p>
 
-        <label for="confirm-password">Confirm Password</label>
+        <label htmlFor="confirm-password">Confirm Password</label>
         <input
           type="password"
           id="confirm-password"
@@ -154,9 +228,11 @@ function RightSide() {
           onChange={(e) => setConfirmPassword(e.target.value)}
           onBlur={checkConfirmPassword}
         />
-        <p className="errorMsg" ref={confirmPasswordRef}>Passwords do not match!</p>
+        <p className="errorMsg" ref={confirmPasswordRef}>
+          Passwords do not match!
+        </p>
 
-        <button>Sign Up</button>
+        <button onClick={signup}>Sign Up</button>
 
         <div className="login-btn">
           Already have an account? <Link to="/login">Login</Link>

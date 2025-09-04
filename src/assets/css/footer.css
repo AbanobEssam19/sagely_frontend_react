@@ -19,7 +19,7 @@
 }
 
 .footer .logo {
-    color: white;
+    color: var(--second);
     font-size: 1.6rem;
     font-weight: 700;
     position: relative;
@@ -33,7 +33,7 @@
 }
 
 .footer .logo span {
-    color: var(--second);
+    color: var(--third);
 }
 
 .footer .links {
@@ -42,12 +42,12 @@
 }
 
 .footer .links a {
-    color: white;
+    color: var(--second);
     text-decoration: none;
 }
 
 .footer .links a:hover {
-    color: var(--second);
+    color: var(--third);
 }
 
 .footer .bottom {
