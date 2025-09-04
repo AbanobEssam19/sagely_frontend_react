@@ -1,6 +1,7 @@
 import React from 'react';
 import '../assets/css/header.css';
 import graduateCap from '../assets/images/graduate-hat.png';
+import { Link } from 'react-router-dom';
 
 
 
@@ -27,7 +28,7 @@ function Logo() {
 function Username() {
     return (
         <div className='username'>
-            <p>Abanob Essam</p>
+            <Link to="/login">Login</Link>
         </div>
     )
 }

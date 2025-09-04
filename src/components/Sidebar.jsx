@@ -44,11 +44,11 @@ function SidebarMenu() {
         </Link>
       </li>
       <li>
-        <Link to="">
-          <i className="fas fa-user"></i> <span>Profile</span>
+        <Link to="/login">
+          <i className="fas fa-user"></i> <span>Login</span>
         </Link>
       </li>
-      <li>
+      <li style={{ display: "none" }}>
         <Link to="">
           <i className="fas fa-sign-out-alt"></i> <span>Logout</span>
         </Link>
