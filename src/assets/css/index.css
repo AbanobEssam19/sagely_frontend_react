@@ -1,6 +1,7 @@
 :root {
   --main: #800020;
-  --second: #D4AF37;
+  --second: white;
+  --third: #D4AF37;
 }
 
 * {

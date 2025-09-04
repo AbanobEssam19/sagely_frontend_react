@@ -3,8 +3,28 @@ import Sidebar from "./Sidebar";
 import { Outlet } from "react-router-dom";
 import "../assets/css/main.css";
 import Footer from "./Footer";
+import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { fetchUser } from "../states/APIs/apis";
+import Loading from "../pages/Loading";
 
 function Layout() {
+  const dispatch = useDispatch();
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const fetchData = async () => {
+      await dispatch(fetchUser(token));
+      setLoading(false);
+    };
+
+    fetchData();
+  }, [dispatch]);
+
+  if (loading) return <Loading />;
+
   return (
     <div className="App">
       <Header />
