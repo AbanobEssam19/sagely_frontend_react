@@ -1,11 +1,11 @@
-.login {
+.signup {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
 }
 
-.login-container {
+.signup-container {
     display: flex;
     max-width: 900px;
     width: 100%;
@@ -13,10 +13,9 @@
     border-radius: 90px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    padding: 30px;
 }
 
-.login .left-side {
+.signup .left-side {
     flex: 1;
     background-color: #fff;
     padding: 10px;
@@ -29,26 +28,26 @@
 }
 
 
-.login .illustration {
+.signup .illustration {
     max-width: 75%;
     margin-bottom: 10px;
 }
 
-.login .left-side h2 {
+.signup .left-side h2 {
     font-size: 1.8rem;
     color: var(--main);
     font-weight: 700;
     margin-bottom: 5px;
 }
 
-.login .left-side p {
+.signup .left-side p {
     font-size: 0.95rem;
     color: #555;
     max-width: 80%;
     margin-top: 5px;
 }
 
-.login .right-side {
+.signup .right-side {
     flex: 1;
     padding: 40px;
     display: flex;
@@ -56,35 +55,35 @@
     justify-content: center;
 }
 
-.login .logo {
+.signup .logo {
     font-size: 2.3rem;
     font-weight: 700;
     color: var(--main);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
-.login .logo span {
+.signup .logo span {
     color: var(--second);
 }
 
-.login .logo img {
+.signup .logo img {
     height: 24px;
     margin-left: -5px;
     margin-top: -40px;
 }
 
-.login .form label {
+.signup .form label {
     font-weight: 600;
     font-size: 0.9rem;
     margin-bottom: 6px;
     display: block;
-    margin-top: 20px;
+    margin-top: 12px;
 }
 
-.login .form input {
+.signup .form input {
     width: 100%;
     padding: 12px;
     margin-bottom: 5px;
@@ -93,29 +92,29 @@
     font-size: 0.95rem;
 }
 
-.login .form input:focus {
+.signup .form input:focus {
     outline: none;
     border-color: var(--main);
 }
 
-.login .form .errorMsg {
+.signup .form .errorMsg {
     display: none;
     color: red;
     font-size: small;
 }
 
-.login .forgot {
+.signup .forgot {
     text-align: right;
     font-size: 0.85rem;
     margin-bottom: 20px;
 }
 
-.login .forgot a {
+.signup .forgot a {
     color: var(--main);
     text-decoration: none;
 }
 
-.login button {
+.signup button {
     width: 100%;
     padding: 12px;
     background-color: var(--main);
@@ -126,13 +125,14 @@
     font-weight: bold;
     cursor: pointer;
     transition: background 0.3s ease;
+    margin-top: 20px;
 }
 
-.login button:hover {
+.signup button:hover {
     background-color: var(--second);
 }
 
-.login .divider {
+.signup .divider {
     display: flex;
     align-items: center;
     text-align: center;
@@ -141,71 +141,71 @@
     margin: 20px 0;
 }
 
-.login .divider::before,
-.login .divider::after {
+.signup .divider::before,
+.signup .divider::after {
     content: '';
     flex: 1;
     border-bottom: 1px solid #ddd;
 }
 
-.login .divider:not(:empty)::before {
+.signup .divider:not(:empty)::before {
     margin-right: 10px;
 }
 
-.login .divider:not(:empty)::after {
+.signup .divider:not(:empty)::after {
     margin-left: 10px;
 }
 
 
-.login .signup-btn {
+.signup .login-btn {
     text-align: center;
     font-size: 0.9rem;
     margin-top: 15px;
 }
 
-.login .signup-btn a {
+.signup .login-btn a {
     color: var(--main);
     text-decoration: none;
     font-weight: 500;
 }
 
 @media (max-width: 768px) {
-    .login-container {
+    .signup-container {
         flex-direction: column;
         border-radius: 15px;
     }
 
-    .login .left-side,
-    .login .right-side {
+    .signup .left-side,
+    .signup .right-side {
         flex: 1 1 100%;
         border-right: none;
         padding: 20px;
     }
 
-    .login .left-side h2 {
+    .signup .left-side h2 {
         font-size: 1.5rem;
     }
 
-    .login .logo {
+    .signup .logo {
         font-size: 1.8rem;
     }
 
-    .login .left-side .illustration {
+    .signup .left-side .illustration {
         max-width: 45%;
     }
 }
 
 @media (max-width: 480px) {
-    .login {
+    .signup {
         padding: 10px;
     }
 
-    .login .left-side p {
+    .signup .left-side p {
         font-size: 0.85rem;
     }
 
-    .login .form input,
-    .login button {
+    .signup .form input,
+    .signup button {
         padding: 10px;
         font-size: 0.9rem;
     }
