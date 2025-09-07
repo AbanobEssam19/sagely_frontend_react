@@ -1,0 +1,19 @@
+.courses > p {
+    font-size: 1.8rem;
+    color: var(--main);
+    font-weight: 700;
+}
+
+.courses > p > i {
+    color: var(--third);
+    margin-right: 5px;
+}
+
+.courses-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 30px; 
+    margin-top: 25px; 
+}
+
