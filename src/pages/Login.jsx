@@ -6,7 +6,7 @@ import graduationHat from "../assets/images/graduate-hat.png";
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUser } from "../states/APIs/apis";
+import { fetchUser } from "../states/APIs/userFetch";
 import NotFoundPage from "./NotFound";
 import Loading from "./Loading";
 import { showAlert } from "../states/reducers/alertSlice";
@@ -93,7 +93,8 @@ function RightSide() {
 
   const dispatch = useDispatch();
 
-  async function login() {
+  async function login(e) {
+    e.preventDefault();
     if (!checkEmail() || !checkPassword()) return;
 
     const res = await fetch("/api/login", {
@@ -126,7 +127,7 @@ function RightSide() {
         <img src={graduationHat} alt="Graduation Cap" />
       </div>
 
-      <div className="form">
+      <form className="form">
         <label htmlFor="email">Email</label>
         <input
           type="email"
@@ -157,12 +158,12 @@ function RightSide() {
           <Link to="#">Forgot password?</Link>
         </div>
 
-        <button onClick={login}>Login</button>
+        <button type="submit" onClick={login}>Login</button>
 
         <div className="signup-btn">
           New here? <Link to="/signup">Create an Account</Link>
         </div>
-      </div>
+      </form>
     </div>
   );
 }

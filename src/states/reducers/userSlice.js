@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchUser } from "../APIs/apis";
+import { fetchUser } from "../APIs/userFetch";
 
 export const userSlice = createSlice({
     name: "user",

@@ -5,8 +5,9 @@ import "../assets/css/main.css";
 import Footer from "./Footer";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { fetchUser } from "../states/APIs/apis";
+import { fetchUser } from "../states/APIs/userFetch";
 import Loading from "../pages/Loading";
+import { fetchCourses } from "../states/APIs/coursesFetch";
 
 function Layout() {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ function Layout() {
     const token = localStorage.getItem("token");
     const fetchData = async () => {
       await dispatch(fetchUser(token));
+      await dispatch(fetchCourses());
       setLoading(false);
     };
 

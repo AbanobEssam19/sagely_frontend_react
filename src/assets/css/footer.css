@@ -80,3 +80,9 @@
         left: 55px;
     }
 }
+
+@media screen and (max-width: 480px) {
+    .footer .bottom {
+        font-size: 0.7rem;
+    }
+}

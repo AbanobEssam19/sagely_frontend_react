@@ -5,7 +5,8 @@
     min-height: 180px;
     background-color: white;
     border-radius: 15px;
-    box-shadow: 5px 15px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 5px 15px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
     padding: 20px;
     gap: 25px;
@@ -13,7 +14,7 @@
 
 .course-container:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .course-container .course-title {
@@ -22,14 +23,26 @@
     font-size: 1.1rem;
 }
 
+.course-container .course-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .course-container .btn-container {
     display: flex;
     gap: 10px;
 }
 
-.course-container button {
+.course-container a {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 130px;
-    height: 30px;
+    height: 35px;
     border-radius: 5px;
     border: none;
     background-color: var(--main);
@@ -39,19 +52,28 @@
     justify-content: center;
     align-items: center;
     gap: 5px;
+    font-size: 0.9rem;
 }
 
-.course-container button:last-of-type {
+.course-container a:last-of-type {
     background-color: white;
     color: var(--main);
     border: 0.5px var(--main) solid;
 }
 
-.course-container button:hover {
+.course-container a:hover {
     background-color: var(--third);
     cursor: pointer;
 }
 
-.course-container button:last-of-type:hover {
+.course-container a:last-of-type:hover {
     background-color: rgb(241 225 225 / 61%);
+}
+
+@media screen and (max-width: 480px) {
+    .course-container a {
+        font-size: 0.8rem;
+        height: 30px;
+        width: 110px;
+    }
 }

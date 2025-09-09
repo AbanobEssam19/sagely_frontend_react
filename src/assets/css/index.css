@@ -2,11 +2,16 @@
   --main: #800020;
   --second: white;
   --third: #D4AF37;
+  --bg: #F6F6F7;
 }
 
 * {
   margin: 0;
   box-sizing: border-box;
+}
+
+p {
+  margin: 0;
 }
 
 body {
@@ -16,7 +21,7 @@ body {
   font-family: 'Cairo', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #F6F6F7;
+  background-color: var(--bg);
 }
 
 
