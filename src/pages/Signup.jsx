@@ -5,7 +5,7 @@ import graduationHat from "../assets/images/graduate-hat.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUser } from "../states/APIs/apis";
+import { fetchUser } from "../states/APIs/userFetch";
 import NotFoundPage from "./NotFound";
 import Loading from "./Loading";
 import { showAlert } from "../states/reducers/alertSlice";
@@ -125,7 +125,8 @@ function RightSide() {
 
   const dispatch = useDispatch();
 
-  async function signup() {
+  async function signup(e) {
+    e.preventDefault();
     if (
       !checkName() ||
       !checkEmail() ||
@@ -165,7 +166,7 @@ function RightSide() {
         <img src={graduationHat} alt="Graduation Cap" />
       </div>
 
-      <div className="form">
+      <form className="form">
         <label htmlFor="fullname">Full Name</label>
         <input
           type="text"
@@ -232,12 +233,12 @@ function RightSide() {
           Passwords do not match!
         </p>
 
-        <button onClick={signup}>Sign Up</button>
+        <button type="submit" onClick={signup}>Sign Up</button>
 
         <div className="login-btn">
           Already have an account? <Link to="/login">Login</Link>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
