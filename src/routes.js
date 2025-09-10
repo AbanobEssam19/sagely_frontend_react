@@ -7,6 +7,7 @@ import NotFoundPage from "./pages/NotFound";
 import Courses from "./pages/Courses";
 import Announcements from "./pages/Announcements";
 import AddAnnouncement from "./pages/AddAnnouncement";
+import EditAnnouncement from "./pages/EditAnnouncement";
 
 export const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
       {
         path: "/announcements/create",
         element: <AddAnnouncement />
+      },
+      {
+        path: "/announcements/:id/edit",
+        element: <EditAnnouncement />
       }
     ],
   },

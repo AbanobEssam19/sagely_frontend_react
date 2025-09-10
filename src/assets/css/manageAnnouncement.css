@@ -48,25 +48,52 @@
   box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.3);
 }
 
-.announcement-form button {
-  background: var(--main);
-  color: var(--second);
-  font-size: 1.1rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 0.5rem;
-  padding: 0.8rem;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.announcement-form button:hover {
-  background: var(--third);
-  color: var(--main);
-}
-
 
 .announcement-form .errorMsg {
     display: none;
     color: red;
+}
+
+.announcement-form .btn-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.announcement-form .btn-container button {
+  width: 100%;
+}
+
+.announcement-form .btn-primary {
+  background: var(--main);
+  color: var(--second);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.announcement-form .btn-primary:hover {
+  background: var(--third);
+  color: var(--main);
+}
+
+.announcement-form .btn-delete {
+  background-color: #b00020;
+  color: var(--second);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.announcement-form .btn-delete:hover {
+  background-color: #d32f2f;
 }

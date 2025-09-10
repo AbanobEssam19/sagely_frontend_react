@@ -1,0 +1,66 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.confirm-modal {
+  background: var(--second);
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.confirm-modal h3 {
+  margin-bottom: 1rem;
+  color: var(--main);
+}
+
+.confirm-modal p {
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.confirm-modal button {
+  border: none;
+  border-radius: 6px;
+  color: var(--second);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.6rem 1.4rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.confirm-modal .btn-delete {
+  background-color: var(--main); /* burgundy */
+}
+
+.confirm-modal .btn-delete:hover {
+  background-color: var(--third); /* gold on hover */
+  color: var(--main);
+}
+
+.confirm-modal .btn-cancel {
+  background-color: #b00020; /* deep red */
+}
+
+.confirm-modal .btn-cancel:hover {
+  background-color: #d32f2f; /* lighter red on hover */
+}
