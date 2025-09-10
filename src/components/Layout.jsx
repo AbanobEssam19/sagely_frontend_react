@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { fetchUser } from "../states/APIs/userFetch";
 import Loading from "../pages/Loading";
 import { fetchCourses } from "../states/APIs/coursesFetch";
+import { fetchAnnouncements } from "../states/APIs/announcementsFetch";
 
 function Layout() {
   const dispatch = useDispatch();
@@ -17,9 +18,15 @@ function Layout() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     const fetchData = async () => {
-      await dispatch(fetchUser(token));
-      await dispatch(fetchCourses());
-      setLoading(false);
+      try {
+        await Promise.all([
+          dispatch(fetchUser(token)),
+          dispatch(fetchCourses()),
+          dispatch(fetchAnnouncements()),
+        ]);
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchData();

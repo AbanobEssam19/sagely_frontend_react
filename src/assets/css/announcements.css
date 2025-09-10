@@ -1,28 +1,28 @@
-.courses {
+.announcements {
     display: flex;
     flex-direction: column;
     gap: 25px;
 }
 
-.courses .courses-header {
+.announcements .announcements-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.courses .courses-header p {
+.announcements .announcements-header p {
     margin: 0;
     font-size: 1.8rem;
     color: var(--main);
     font-weight: 700;
 }
 
-.courses .courses-header p i {
+.announcements .announcements-header p i {
     color: var(--third);
     margin-right: 5px;
 }
 
-.courses .courses-header a {
+.announcements .announcements-header a {
     text-decoration: none;
     display: flex;
     justify-content: center;
@@ -32,33 +32,33 @@
     border: none;
     background-color: var(--main);
     height: 35px;
-    width: 130px;
+    width: 180px;
     transition: all 0.3s ease;
 }
 
-.courses .courses-header a i {
+.announcements .announcements-header a i {
     margin-right: 5px;
 }
 
-.courses .courses-header a:hover {
+.announcements .announcements-header a:hover {
     background-color: var(--third);
 }
 
-.courses-container {
+.announcements-container {
     display: flex;
     flex-direction: column;
     width: 100%;
     gap: 30px; 
 }
 
-.courses .pagination {
+.announcements .pagination {
     display: flex;
     justify-self: center;
     margin-top: 20px;
     gap: 5px;
 }
 
-.courses .page-link {
+.announcements .page-link {
     height: 40px;
     width: 40px;
     display: flex;
@@ -71,29 +71,31 @@
     transition: all 0.3s ease;
 }
 
-.courses .page-link:focus {
+.announcements .page-link:focus {
     box-shadow: none;
 }
 
-.courses .pagination .active, .courses .page-link:hover {
+.announcements .pagination .active, .announcements .page-link:hover {
     background-color: var(--main);
     color: white;
 }
 
-@media screen and (max-width: 480px) {
-    .courses .courses-header a {
+@media screen and (max-width: 768px) {
+    .announcements .announcements-header a {
         width: 35px;
     }
 
-    .courses .courses-header a i {
+    .announcements .announcements-header a i {
         margin: 0;
     }
 
-    .courses .courses-header a span {
+    .announcements .announcements-header a span {
         display: none;
     }
+}
 
-    .courses .courses-header p {
+@media screen and (max-width: 480px) {
+    .announcements .announcements-header p {
         font-size: 1.3rem;
     }
 }
