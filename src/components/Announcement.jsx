@@ -33,7 +33,7 @@ function Announcement({announcement}) {
         </div>
         <p className='announcement-description'>{announcement.content}</p>
         <div className='btn-container'>
-          <Link to="/"><i className="far fa-eye"></i>View Details</Link>
+          <Link to={`/announcements/${announcement.id}`}><i className="far fa-eye"></i>View Details</Link>
           <Link to={`/announcements/${announcement.id}/edit`} style={!user || user.role !== "Admin" ? {display: "none"} : {}}><i className="fas fa-edit"></i>Edit<span> Announcement</span></Link>
         </div>
     </div>
