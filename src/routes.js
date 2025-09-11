@@ -5,6 +5,10 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NotFoundPage from "./pages/NotFound";
 import Courses from "./pages/Courses";
+import Announcements from "./pages/Announcements";
+import AddAnnouncement from "./pages/AddAnnouncement";
+import EditAnnouncement from "./pages/EditAnnouncement";
+import AnnouncementDetails from "./pages/AnnouncementDetails";
 
 export const router = createBrowserRouter([
   {
@@ -18,6 +22,22 @@ export const router = createBrowserRouter([
       {
         path: "/courses",
         element: <Courses />
+      },
+      {
+        path: "/announcements",
+        element: <Announcements />
+      },
+      {
+        path: "/announcements/create",
+        element: <AddAnnouncement />
+      },
+      {
+        path: "/announcements/:id/edit",
+        element: <EditAnnouncement />
+      },
+      {
+        path: "/announcements/:id",
+        element: <AnnouncementDetails />
       }
     ],
   },

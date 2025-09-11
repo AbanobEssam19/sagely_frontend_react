@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export const fetchCourses = createAsyncThunk("courses/fetchCourses", async () => {
-    const res = await fetch("/api/courses", {
+export const fetchAnnouncements = createAsyncThunk("announcements/fetchAnnouncements", async () => {
+    const res = await fetch("/api/announcements", {
         method: "GET",
         headers: {
             "Accept": "application/json",
@@ -9,5 +9,5 @@ export const fetchCourses = createAsyncThunk("courses/fetchCourses", async () =>
         }
     })
     const data = await res.json();
-    return data.courses;
+    return data.announcements;
 })

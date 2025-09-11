@@ -76,4 +76,8 @@
         height: 30px;
         width: 110px;
     }
+
+    .course-container .course-description {
+        font-size: 0.9rem;
+    }
 }

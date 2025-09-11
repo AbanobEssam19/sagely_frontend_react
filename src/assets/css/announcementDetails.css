@@ -1,0 +1,129 @@
+.announcement-details .announcement-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.announcement-details .announcement-title .icon-container {
+    background-color: var(--main);
+    border-radius: 20px;
+    color: var(--second);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.announcement-details .announcement-title p {
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+
+.announcement-details .announcement-info {
+    display: flex;
+    gap: 5px;
+    color: #777;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: .1rem solid rgb(210, 212, 214);
+}
+
+.announcement-area {
+    padding-left: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.announcement-content {
+    border-bottom: .1rem solid rgb(210, 212, 214);
+    padding-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.announcement-area .btn-container {
+    display: flex;
+    gap: 15px;
+}
+
+.announcement-area a {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    gap: 7px;
+    transition: all 0.3s ease;
+}
+
+.announcement-area .back-btn {
+    background-color: var(--main);
+    color: var(--second);
+    width: 80px;
+    height: 30px;
+}
+
+.announcement-area .back-btn:hover {
+    background-color: var(--third);
+    color: var(--main);
+}
+
+.announcement-area .course-btn {
+    background-color: white;
+    width: 130px;
+    color: var(--main);
+    border: 0.5px var(--main) solid;
+}
+
+.announcement-area .course-btn:hover {
+    background-color: rgb(241 225 225 / 61%);
+}
+
+@media screen and (max-width: 600px) {
+    .announcement-details .announcement-title .icon-container {
+        width: 30px;
+        height: 30px;
+        font-size: 0.9rem;
+    }
+
+    .announcement-details .announcement-title p {
+        font-size: 1.4rem;
+        font-weight: 600;
+    }
+
+    .announcement-details .announcement-info {
+        font-size: 0.7rem;
+    }
+
+    .announcement-area {
+        padding-left: 40px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .announcement-details .announcement-title .icon-container {
+        width: 25px;
+        height: 25px;
+        font-size: 0.7rem;
+    }
+
+    .announcement-details .announcement-title p {
+        font-size: 1.3rem;
+        font-weight: 500;
+    }
+
+    .announcement-details .announcement-info {
+        font-size: 0.6rem;
+    }
+
+    .announcement-area {
+        padding-left: 30px;
+    }
+
+    .announcement-content {
+        font-size: 1.1rem;
+    }
+}

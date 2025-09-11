@@ -55,6 +55,8 @@ function SidebarMenu() {
   useEffect(() => {
     if (location.pathname === "/")
       activate(0);
+    else if (location.pathname.includes("announcement"))
+      activate(1);
     else if (location.pathname.includes("course"))
       activate(2);
   }, [location])
@@ -67,7 +69,7 @@ function SidebarMenu() {
         </Link>
       </li>
       <li ref={(e) => items.current[1] = e} onClick={() => activate(1)}>
-        <Link to="">
+        <Link to="/announcements">
           <i className="fas fa-bullhorn"></i> <span>Announcements</span>
         </Link>
       </li>

@@ -92,4 +92,8 @@
     .courses .courses-header a span {
         display: none;
     }
+
+    .courses .courses-header p {
+        font-size: 1.3rem;
+    }
 }
