@@ -59,6 +59,8 @@ function SidebarMenu() {
       activate(1);
     else if (location.pathname.includes("course"))
       activate(2);
+    else if (location.pathname.includes("profile") && user)
+      activate(6);
   }, [location])
 
   return (

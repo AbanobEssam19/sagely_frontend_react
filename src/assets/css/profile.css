@@ -1,0 +1,217 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.profile-header p {
+    color: var(--main);
+    font-weight: 700;
+    font-size: 1.7rem;
+}
+
+
+.section-container {
+    background-color: white;
+    width: 100%;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.section-header p {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.5rem;
+    color: var(--main);
+    font-weight: 600;
+}
+
+.section-header i {
+    color: var(--third);
+    transition: all 0.3s ease;
+}
+
+.section-header button {
+    border: none;
+    background-color: var(--main);
+    color: var(--second);
+    width: 90px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    gap: 7px;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px rgba(128, 0, 32, 0.2);
+}
+
+.section-header button:hover {
+    background-color: var(--third);
+}
+
+.section-header button:hover i {
+    color: var(--second);
+}
+
+.section-container form {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.section-container form .form-field {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 10px;
+}
+
+.section-container form > .form-field > input {
+    max-width: 300px;
+}
+
+.section-container form > .form-field > input, .section-container form > .form-field > input:disabled {
+    border: none;
+    background-color: white;
+    outline: none;
+}
+
+.section-container form .errorMsg {
+    display: none;
+    color: red !important;
+    font-size: 0.9rem;
+}
+
+@media screen and (max-width: 600px) {
+
+    .section-header p {
+        font-size: 1.4rem;
+    }
+
+    .section-container form {
+        flex-direction: column;
+    }
+
+    .section-container form .form-field {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .section-header p {
+        font-size: 1.2rem;
+    }
+    .section-header button {
+        width: 70px;
+        height: 30px;
+        font-size: small;
+    }
+}
+
+
+.section-container form > .form-field > p {
+    color: #777;
+}
+
+.section-container form .form-field button {
+    color: var(--second);
+    border: none;
+    border-radius: 8px;
+    background-color: var(--main);
+    width: 200px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 15px;
+    box-shadow: 0 3px 8px rgba(128, 0, 32, 0.2);
+}
+
+.form-field .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.form-field .section-modal {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.form-field .section-modal h2 {
+  margin-bottom: 15px;
+  color: var(--main);
+}
+
+.notification-field .section-modal .form {
+  display: flex;
+  gap: 30px;
+}
+
+.form-field .modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+  gap: 10px;
+}
+
+.form-field .save-btn {
+  background-color: #28a745;
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.form-field .cancel-btn {
+  background-color: #ccc;
+  border: none;
+  color: black;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.form-field .save-btn:hover {
+  background-color: #218838;
+}
+
+.form-field .cancel-btn:hover {
+  background-color: #aaa;
+}
+
+.reset-password .form-field {
+    width: 100% !important;
+}
+
+.reset-password .form-field input {
+    border-radius: 5px;
+    border: 1px solid #777;
+    padding: 5px;
+}
