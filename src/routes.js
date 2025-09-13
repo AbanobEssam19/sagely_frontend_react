@@ -9,6 +9,7 @@ import Announcements from "./pages/Announcements";
 import AddAnnouncement from "./pages/AddAnnouncement";
 import EditAnnouncement from "./pages/EditAnnouncement";
 import AnnouncementDetails from "./pages/AnnouncementDetails";
+import Profile from "./pages/Profile";
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
       {
         path: "/announcements/:id",
         element: <AnnouncementDetails />
+      },
+      {
+        path: "/profile",
+        element: <Profile />
       }
     ],
   },
