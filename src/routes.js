@@ -1,15 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
-import Home from "./pages/Home";
-import Layout from "./components/Layout";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import NotFoundPage from "./pages/NotFound";
-import Courses from "./pages/Courses";
-import Announcements from "./pages/Announcements";
-import AddAnnouncement from "./pages/AddAnnouncement";
-import EditAnnouncement from "./pages/EditAnnouncement";
-import AnnouncementDetails from "./pages/AnnouncementDetails";
-import Profile from "./pages/Profile";
+import Home from "./pages/Home/Home.jsx";
+import Layout from "./components/Layout/Layout.jsx";
+import Login from "./pages/Login/Login.jsx";
+import Signup from "./pages/Signup/Signup.jsx";
+import NotFoundPage from "./pages/NotFound/NotFound.jsx";
+import Courses from "./pages/Courses/Courses.jsx";
+import Announcements from "./pages/Announcements/Announcements.jsx";
+import AddAnnouncement from "./pages/AddAnnouncement/AddAnnouncement.jsx";
+import EditAnnouncement from "./pages/EditAnnouncement/EditAnnouncement.jsx";
+import AnnouncementDetails from "./pages/AnnouncementDetails/AnnouncementDetails.jsx";
+import Profile from "./pages/Profile/Profile.jsx";
 
 export const router = createBrowserRouter([
   {
@@ -56,6 +56,10 @@ export const router = createBrowserRouter([
   },
   {
     path: "/error",
+    element: <NotFoundPage />
+  },
+  {
+    path: "*",
     element: <NotFoundPage />
   }
 ]);

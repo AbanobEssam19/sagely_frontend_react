@@ -5,7 +5,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import App from './App';
 import { Provider } from 'react-redux';
 import store from "./states/store";
-import Alert from './components/Alert';
+import Alert from './components/Alert/Alert.jsx';
 
 import './assets/css/index.css';
 
