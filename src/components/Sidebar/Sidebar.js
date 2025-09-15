@@ -50,6 +50,8 @@ export const useSidebar = () => {
       activate(1);
     else if (location.pathname.includes("course"))
       activate(2);
+    else if (location.pathname.includes("chatbot"))
+      activate(5);
     else if (location.pathname.includes("profile"))
       activate(6);
   }, [location])

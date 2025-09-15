@@ -42,7 +42,7 @@ function SidebarMenu() {
         </Link>
       </li>
       <li ref={(e) => items.current[5] = e} onClick={() => activate(5)}>
-        <Link to="">
+        <Link to="/chatbot">
           <i className="fas fa-robot"></i> <span>Chatbot</span>
         </Link>
       </li>

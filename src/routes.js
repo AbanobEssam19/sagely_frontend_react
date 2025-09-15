@@ -10,6 +10,7 @@ import AddAnnouncement from "./pages/AddAnnouncement/AddAnnouncement.jsx";
 import EditAnnouncement from "./pages/EditAnnouncement/EditAnnouncement.jsx";
 import AnnouncementDetails from "./pages/AnnouncementDetails/AnnouncementDetails.jsx";
 import Profile from "./pages/Profile/Profile.jsx";
+import Chatbot from "./pages/Chatbot/Chatbot.jsx";
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ export const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile />
+      },
+      {
+        path: "/chatbot",
+        element: <Chatbot />
       }
     ],
   },
