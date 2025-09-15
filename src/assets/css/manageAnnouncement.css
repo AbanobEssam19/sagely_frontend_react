@@ -1,0 +1,99 @@
+:root {
+  --main: #800020;
+  --second: white;
+  --third: #D4AF37;
+  --bg: #F6F6F7;
+}
+
+.announcement-page {
+  background: var(--bg);
+  padding: 2rem;
+  max-width: 600px;
+  margin: 2rem auto;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.announcement-page h2 {
+  color: var(--main);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.announcement-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.announcement-form label {
+  font-weight: 600;
+  color: var(--main);
+}
+
+.announcement-form input,
+.announcement-form textarea,
+.announcement-form select {
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  outline: none;
+}
+
+.announcement-form input:focus,
+.announcement-form textarea:focus,
+.announcement-form select:focus {
+  border-color: var(--third);
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.3);
+}
+
+
+.announcement-form .errorMsg {
+    display: none;
+    color: red;
+}
+
+.announcement-form .btn-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.announcement-form .btn-container button {
+  width: 100%;
+}
+
+.announcement-form .btn-primary {
+  background: var(--main);
+  color: var(--second);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.announcement-form .btn-primary:hover {
+  background: var(--third);
+  color: var(--main);
+}
+
+.announcement-form .btn-delete {
+  background-color: #b00020;
+  color: var(--second);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.announcement-form .btn-delete:hover {
+  background-color: #d32f2f;
+}

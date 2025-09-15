@@ -1,0 +1,88 @@
+.footer {
+    width: 100%;
+    min-height: 130px;
+    background-color: var(--main);
+    position: relative;
+}
+
+.footer-container {
+    padding: 20px 30px 10px 25px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+}
+
+.footer .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer .logo {
+    color: var(--second);
+    font-size: 1.6rem;
+    font-weight: 700;
+    position: relative;
+}
+
+.footer .logo img {
+    height: 22px;
+    position: absolute;
+    top: -13px;
+    left: 89px;
+}
+
+.footer .logo span {
+    color: var(--third);
+}
+
+.footer .links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer .links a {
+    color: var(--second);
+    text-decoration: none;
+}
+
+.footer .links a:hover {
+    color: var(--third);
+}
+
+.footer .bottom {
+    color: rgba(255, 255, 255, 0.585);
+    text-align: center;
+}
+
+@media screen and (max-width: 620px) {
+    .footer .top {
+        font-size: small;
+        flex-direction: column;
+        gap: 15px;
+        padding-bottom: 10px;
+    }
+
+    .footer .logo {
+        font-size: 1rem;
+    }
+    
+    .footer .bottom {
+        font-size: smaller;
+    }
+
+    .footer .logo img {
+        height: 17px;
+        top: -11px;
+        left: 55px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .footer .bottom {
+        font-size: 0.7rem;
+    }
+}

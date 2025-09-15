@@ -1,0 +1,32 @@
+:root {
+  --main: #800020;
+  --second: white;
+  --third: #D4AF37;
+  --bg: #F6F6F7;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+p {
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  position: relative;
+  font-family: 'Cairo', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg);
+}
+
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
