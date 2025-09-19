@@ -1,0 +1,109 @@
+.chatbot-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.chatbot-container > div {
+    width: 75%;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, .06);
+}
+
+.chatbot-header {
+    background-color: var(--main);
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 800;
+    gap: 10px;
+    padding: 25px;
+}
+
+.chatbot-header i {
+    color: var(--third);
+}
+
+.chatbot-header p {
+    color: var(--second);
+}
+
+.chatbot-container .chat {
+    height: 400px;
+    background-color: white;
+    padding: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow: auto;
+}
+
+.chat .chat-message {
+    width: fit-content;
+    max-width: 70%;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.chat .chat-message.bot {
+    background-color: rgba(128, 0, 32, .08);
+    color: var(--main);
+}
+
+.chat .chat-message.human {
+    background-color: var(--main);
+    color: var(--second);
+    align-self: flex-end;
+}
+
+.chatbot-container .controls {
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+.chatbot-container .controls input {
+    width: 93%;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, .06);
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    outline: none;
+}
+
+.chatbot-container .controls button {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, .06);
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 1.3rem;
+    background-color: var(--main);
+    color: var(--second);
+}
+
+@media screen and (max-width: 1000px) {
+    .chatbot-container > div {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .chat .chat-message {
+        max-width: 90%;
+    }
+
+    .chatbot-header {
+        font-size: 1.2rem;
+        padding: 15px;
+    }
+
+    .chat .chat-message {
+        font-size: 0.9rem;
+    }
+}
