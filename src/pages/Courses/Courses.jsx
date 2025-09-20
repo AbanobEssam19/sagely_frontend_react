@@ -21,7 +21,7 @@ function Courses() {
           <i className="fa-solid fa-book"></i> Courses
         </p>
         <Link
-          to="/"
+          to="/courses/create"
           style={!user || user.role === "Student" ? { display: "none" } : {}}
         >
           <i className="fa-solid fa-plus"></i> <span>Add Course</span>

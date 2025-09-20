@@ -11,6 +11,7 @@ import EditAnnouncement from "./pages/EditAnnouncement/EditAnnouncement.jsx";
 import AnnouncementDetails from "./pages/AnnouncementDetails/AnnouncementDetails.jsx";
 import Profile from "./pages/Profile/Profile.jsx";
 import Chatbot from "./pages/Chatbot/Chatbot.jsx";
+import AddCourse from "./pages/AddCourse/AddCourse.jsx";
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ export const router = createBrowserRouter([
       {
         path: "/courses",
         element: <Courses />
+      },
+      {
+        path: "/courses/create",
+        element: <AddCourse />
       },
       {
         path: "/announcements",
