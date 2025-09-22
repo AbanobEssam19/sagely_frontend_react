@@ -1,8 +1,9 @@
 import React from "react";
 import "../../assets/css/manageCourse.css";
 import { useManageCourse, useRequirement } from "./ManageCourse";
+import ConfirmModal from "../ConfirmModal/ConfirmModal.jsx";
 
-function ManageCourse() {
+function ManageCourse({ course }) {
   const {
     courseData,
     handleChange,
@@ -11,11 +12,14 @@ function ManageCourse() {
     editRequirement,
     deleteRequirement,
     errorRef,
-    submit
-  } = useManageCourse();
+    submit,
+    showConfirm,
+    setShowConfirm,
+    deleteCourse
+  } = useManageCourse(course);
   return (
     <div className="manage-course">
-      <h2>Create Course</h2>
+      <h2>{course ? "Edit" : "Create"} Course</h2>
       <div className="course-info">
         <label>Title</label>
         <input
@@ -49,12 +53,29 @@ function ManageCourse() {
           />
         ))}
       </div>
-      <p className="errorMsg" ref={errorRef}>Please Enter all fields!</p>
+      <p className="errorMsg" ref={errorRef}>
+        Please Enter all fields!
+      </p>
       <div className="btn-container">
-        <button className="btn-primary" type="submit" onClick={submit}>
-          Create
+        <button className="btn-primary" type="button" onClick={submit}>
+          {course ? "Save" : "Create"}
+        </button>
+        <button
+          className="btn-delete"
+          type="button"
+          onClick={() => setShowConfirm(true)}
+          style={!course ? { display: "none" } : {}}
+        >
+          Delete
         </button>
       </div>
+      {showConfirm && (
+        <ConfirmModal
+          name={"course"}
+          setShowConfirm={setShowConfirm}
+          deleteFunction={deleteCourse}
+        />
+      )}
     </div>
   );
 }

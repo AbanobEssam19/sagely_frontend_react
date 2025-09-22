@@ -4,23 +4,25 @@ import { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "../../states/APIs/userFetch";
 import { showAlert } from "../../states/reducers/alertSlice";
+import { setLoading } from "../../states/reducers/loadingSlice";
 
 function useSignup() {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.userData.data);
 
-  const [loading, setLoading] = useState(true);
+  const loading = useSelector((state) => state.loading);
 
   useEffect(() => {
     let token = localStorage.getItem("token");
     const fetchData = async () => {
+      dispatch(setLoading(true));
       await dispatch(fetchUser(token));
-      setLoading(false);
+      dispatch(setLoading(false));
     };
 
     fetchData();
-  }, [dispatch]);
+  }, []);
 
   return {loading, user};
 }

@@ -5,9 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "../../states/APIs/userFetch";
 import { showAlert } from "../../states/reducers/alertSlice";
 import { updateUser } from "../../states/reducers/userSlice";
+import { setLoading } from "../../states/reducers/loadingSlice";
 
 function useLogin() {
-  const [loading, setLoading] = useState(true);
+  const loading = useSelector((state) => state.loading);
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.userData.data);
@@ -15,12 +16,13 @@ function useLogin() {
   useEffect(() => {
     let token = localStorage.getItem("token");
     const fetchData = async () => {
+      dispatch(setLoading(true));
       await dispatch(fetchUser(token));
-      setLoading(false);
+      dispatch(setLoading(false));
     };
 
     fetchData();
-  }, [dispatch]);
+  }, []);
 
   return {loading, user};
 }

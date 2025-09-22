@@ -1,15 +1,16 @@
-import { useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 import { fetchUser } from "../../states/APIs/userFetch.js";
 import { fetchCourses } from "../../states/APIs/coursesFetch.js";
 import { fetchAnnouncements } from "../../states/APIs/announcementsFetch.js";
+import { setLoading } from "../../states/reducers/loadingSlice.js";
 
 export const useLayout = () => {
   const dispatch = useDispatch();
 
-  const [loading, setLoading] = useState(true);
-
   useEffect(() => {
+    dispatch(setLoading(true));
+    
     const token = localStorage.getItem("token");
     const fetchData = async () => {
       try {
@@ -19,12 +20,14 @@ export const useLayout = () => {
           dispatch(fetchAnnouncements()),
         ]);
       } finally {
-        setLoading(false);
+        dispatch(setLoading(false));
       }
     };
 
     fetchData();
-  }, [dispatch]);
+  }, []);
+
+  const loading = useSelector((state) => state.loading);
 
   return {loading};
 }

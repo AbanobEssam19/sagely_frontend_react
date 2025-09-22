@@ -164,6 +164,22 @@
   color: red;
 }
 
+.manage-course .btn-delete {
+  background-color: #b00020;
+  color: var(--second);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.manage-course .btn-delete:hover {
+  background-color: #d32f2f;
+}
+
 @media screen and (max-width: 480px) {
   .manage-course > h2 {
     font-size: 1.5rem;

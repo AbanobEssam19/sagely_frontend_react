@@ -5,7 +5,7 @@ export const announcementsSlice = createSlice({
     name: "announcements",
 
     initialState: {
-        data: null
+        data: []
     },
 
     reducers: {
