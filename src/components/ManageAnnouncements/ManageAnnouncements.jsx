@@ -2,7 +2,7 @@ import React from "react";
 import "../../assets/css/manageAnnouncement.css";
 import ConfirmModal from "../ConfirmModal/ConfirmModal.jsx";
 import { useManageAnnouncements } from "./ManageAnnouncements.js";
-import { Navigate } from "react-router-dom";
+import NotFoundPage from "../../pages/NotFound/NotFound.jsx";
 
 function ManageAnnouncements({ announcement }) {
   const {
@@ -18,7 +18,7 @@ function ManageAnnouncements({ announcement }) {
   } = useManageAnnouncements(announcement);
 
   if (!user || user.role !== "Admin") {
-    return <Navigate to="/error" replace />;
+    return <NotFoundPage />
   }
 
   return (

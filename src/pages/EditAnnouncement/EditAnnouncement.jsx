@@ -1,7 +1,8 @@
 import React from 'react'
 import ManageAnnouncements from '../../components/ManageAnnouncements/ManageAnnouncements.jsx'
 import { useSelector } from 'react-redux';
-import { Navigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import NotFoundPage from '../NotFound/NotFound.jsx';
 
 function EditAnnouncement() {
   const announcements = useSelector((state) => state.announcements.data);
@@ -12,7 +13,7 @@ function EditAnnouncement() {
   const announcement = announcements.find((announcement) => announcement.id == id);
 
   if (!announcement)
-    return <Navigate to="/error" replace />;
+    return <NotFoundPage />;
 
   return (
     <ManageAnnouncements announcement={announcement} />

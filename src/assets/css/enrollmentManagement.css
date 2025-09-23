@@ -1,0 +1,111 @@
+.enroll-course {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 25px;
+  background: var(--second);
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+  border-top: 6px solid var(--main);
+}
+
+.enroll-course h2 {
+  margin-bottom: 10px;
+  color: var(--main);
+}
+
+.enroll-course .course-desc {
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.enroll-course .requirements {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.enroll-course .requirement-card {
+  background: var(--bg);
+  border-radius: 10px;
+  padding: 15px;
+  transition: 0.3s;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+.enroll-course .requirement-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.enroll-course .requirement-card h4 {
+  margin: 0 0 8px;
+  color: var(--main);
+}
+
+.enroll-course .requirement-card p {
+  margin: 0 0 10px;
+  color: #555;
+}
+
+.enroll-course input[type="file"] {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.9rem;
+  padding: 6px;
+  border-radius: 6px;
+  background: var(--second);
+  cursor: pointer;
+}
+
+.enroll-course input[type="file"]::-webkit-file-upload-button {
+  background: var(--main);
+  color: var(--second);
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.enroll-course input[type="file"]::-webkit-file-upload-button:hover {
+  background: var(--third);
+  color: var(--main);
+}
+
+.enroll-course .submit-btn {
+  margin-top: 25px;
+  background: var(--main);
+  color: var(--second);
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  border: 2px solid var(--main);
+}
+
+.enroll-course .submit-btn:hover {
+  background: var(--third);
+  color: var(--main);
+  border-color: var(--third);
+}
+
+@media (max-width: 600px) {
+  .enroll-course {
+    margin: 10px;
+    padding: 15px;
+  }
+
+  .enroll-course .submit-btn {
+    width: 100%;
+  }
+}
+
+
+@media screen and (max-width: 480px) {
+  .enroll-course input[type="file"] {
+    width: 170px;
+  }
+}

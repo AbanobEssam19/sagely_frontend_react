@@ -1,7 +1,8 @@
 import React from 'react'
 import ManageCourse from "../../components/ManageCourse/ManageCourse.jsx"
 import { useSelector } from 'react-redux';
-import { Navigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import NotFoundPage from '../NotFound/NotFound.jsx';
 
 function EditCourse() {
   const courses = useSelector((state) => state.courses.data);
@@ -12,7 +13,7 @@ function EditCourse() {
   const course = courses.find((course) => course.id == id);
 
   if (!course)
-    return <Navigate to="/error" replace />;
+    return <NotFoundPage />;
 
   return (
     <ManageCourse course={course} />
