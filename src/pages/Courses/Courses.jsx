@@ -12,6 +12,8 @@ function Courses() {
     currentPage,
     setCurrentPage,
     currentCourses,
+    showEnrolledOnly,
+    setShowEnrolledOnly
   } = useCourses();
 
   return (
@@ -20,18 +22,34 @@ function Courses() {
         <p>
           <i className="fa-solid fa-book"></i> Courses
         </p>
-        <Link
-          to="/courses/create"
-          style={!user || user.role === "Student" ? { display: "none" } : {}}
-        >
-          <i className="fa-solid fa-plus"></i> <span>Add Course</span>
-        </Link>
+        {user && user.role !== "Student" && (
+          <Link to="/courses/create">
+            <i className="fa-solid fa-plus"></i> <span>Add Course</span>
+          </Link>
+        )}
+        {/* 🔹 Checkbox only for Students */}
+      {user && user.role === "Student" && (
+        <div className="courses-filter">
+          <label>
+            <input
+              type="checkbox"
+              checked={showEnrolledOnly}
+              onChange={(e) => setShowEnrolledOnly(e.target.checked)}
+            />{" "}
+            Enrolled Only
+          </label>
+        </div>
+      )}
       </div>
+
+      
+
       <div className="courses-container">
         {currentCourses.map((course) => (
           <Course key={course.id} course={course} />
         ))}
       </div>
+
       <div>
         <ul className="pagination">
           <li className="page-item">

@@ -37,8 +37,8 @@ function CourseDetails() {
           </Link>
           <Link
             className="view-enrollments-btn"
-            to={`/courses/${course.id}/enrollments`}
-            style={!user || user.role === "Student" ? { dispaly: "none" } : {}}
+            to={`/courses/${course.id}/requests`}
+            style={!user || user.role === "Student" ? { display: "none" } : {}}
           >
             <i className="fa-solid fa-arrow-right-to-bracket"></i>
             <span>View Enrollments</span>

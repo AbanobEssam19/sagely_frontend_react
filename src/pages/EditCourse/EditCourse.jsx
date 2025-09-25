@@ -12,7 +12,9 @@ function EditCourse() {
   // eslint-disable-next-line
   const course = courses.find((course) => course.id == id);
 
-  if (!course)
+  const user = useSelector((state) => state.userData.data);
+
+  if (!course || !user || user.role === "Student")
     return <NotFoundPage />;
 
   return (

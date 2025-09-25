@@ -1,0 +1,86 @@
+.enrollment-requests {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+}
+
+
+.requests-header {
+    background: var(--main);
+    color: var(--second);
+    padding: 25px;
+    font-size: 0.9rem;
+    border-radius: 10px;
+}
+
+.requests-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.submission-card {
+    background: var(--second);
+    border-radius: 12px;
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s ease;
+    height: 100px;
+    box-shadow: 5px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.submission-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.student-info {
+    color: var(--main);
+}
+
+.student-info h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.student-info p {
+    margin: 0.2rem 0 0;
+    color: #444;
+}
+
+.check-btn {
+    background: var(--main);
+    color: var(--second);
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.check-btn:hover {
+    background: var(--third);
+    color: var(--main);
+}
+
+@media (max-width: 600px) {
+    .submission-card {
+        flex-direction: column;
+        align-items: flex-start;
+        height: fit-content;
+    }
+
+    .check-btn {
+        margin-top: 0.8rem;
+        width: 100%;
+        text-align: center;
+    }
+}
