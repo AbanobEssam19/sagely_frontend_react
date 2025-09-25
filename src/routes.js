@@ -11,10 +11,16 @@ import EditAnnouncement from "./pages/EditAnnouncement/EditAnnouncement.jsx";
 import AnnouncementDetails from "./pages/AnnouncementDetails/AnnouncementDetails.jsx";
 import Profile from "./pages/Profile/Profile.jsx";
 import Chatbot from "./pages/Chatbot/Chatbot.jsx";
+import AddCourse from "./pages/AddCourse/AddCourse.jsx";
+import EditCourse from "./pages/EditCourse/EditCourse.jsx";
+import CourseDetails from "./pages/CourseDetails/CourseDetails.jsx";
+import Enroll from "./pages/Enroll/Enroll.jsx";
+import EnrollmentRequests from "./pages/EnrollmentRequests/EnrollmentRequests.jsx";
+import ViewSubmission from "./pages/ViewSubmission/ViewSubmission.jsx";
 
 export const router = createBrowserRouter([
   {
-    path: "/", // parent route
+    path: "/",
     element: <Layout />,
     children: [
       {
@@ -24,6 +30,30 @@ export const router = createBrowserRouter([
       {
         path: "/courses",
         element: <Courses />
+      },
+      {
+        path: "/courses/create",
+        element: <AddCourse />
+      },
+      {
+        path: "/courses/:id/edit",
+        element: <EditCourse />
+      },
+      {
+        path: "/courses/:id",
+        element: <CourseDetails />
+      },
+      {
+        path: "/courses/:id/enroll",
+        element: <Enroll />
+      },
+      {
+        path: "/courses/:id/requests",
+        element: <EnrollmentRequests />
+      },
+      {
+        path: "/courses/:courseId/requests/:studentId",
+        element: <ViewSubmission />
       },
       {
         path: "/announcements",

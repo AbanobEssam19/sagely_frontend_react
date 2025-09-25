@@ -1,13 +1,14 @@
 import React from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../../assets/css/announcementDetails.css";
 import { useAnnouncementDetails } from "./AnnouncementDetails";
+import NotFoundPage from "../NotFound/NotFound";
 
 function AnnouncementDetails() {
   const {announcement, course, formattedDate} = useAnnouncementDetails();
 
   if (!announcement) {
-    return <Navigate to="/error" replace />;
+    return <NotFoundPage />;
   }
 
   return (

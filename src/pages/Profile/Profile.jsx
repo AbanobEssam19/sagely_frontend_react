@@ -2,13 +2,13 @@ import React from "react";
 import "../../assets/css/profile.css";
 import { useSelector } from "react-redux";
 import { useInformation, useNotificationPreferences, useResetPassword } from "./Profile";
-import { Navigate } from "react-router-dom";
+import NotFoundPage from "../NotFound/NotFound";
 
 function Profile() {
   const user = useSelector((state) => state.userData.data);
 
   if (!user) 
-    return <Navigate to="/error" replace />;
+    return <NotFoundPage />;
 
   return (
     <div className="profile">

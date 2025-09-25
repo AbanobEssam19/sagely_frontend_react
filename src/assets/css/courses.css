@@ -80,6 +80,18 @@
     color: white;
 }
 
+.courses-filter {
+    margin: 10px 0;
+    font-size: 1rem;
+    color: var(--main);
+}
+
+.courses-filter input {
+    margin-right: 5px;
+    accent-color: var(--main);
+}
+
+
 @media screen and (max-width: 480px) {
     .courses .courses-header a {
         width: 35px;

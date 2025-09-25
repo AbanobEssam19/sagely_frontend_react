@@ -1,0 +1,123 @@
+.course-details .course-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.course-details .course-title .icon-container {
+    background-color: var(--main);
+    border-radius: 20px;
+    color: var(--second);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.course-details .course-title p {
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+
+.course-area {
+    padding-left: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.course-content {
+    border-bottom: .1rem solid rgb(210, 212, 214);
+    padding-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.course-area .btn-container {
+    display: flex;
+    gap: 15px;
+}
+
+.course-area a {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    gap: 7px;
+    transition: all 0.3s ease;
+}
+
+.course-area .back-btn {
+    background-color: var(--main);
+    color: var(--second);
+    width: 80px;
+    height: 30px;
+}
+
+.course-area .back-btn:hover {
+    background-color: var(--third);
+    color: var(--main);
+}
+
+.course-area .enroll-btn {
+    background-color: white;
+    width: 85px;
+    color: var(--main);
+    border: 0.5px var(--main) solid;
+}
+
+.course-area .enroll-btn:hover {
+    background-color: rgb(241 225 225 / 61%);
+}
+
+.course-area .view-enrollments-btn {
+    background-color: white;
+    width: 170px;
+    color: var(--main);
+    border: 0.5px var(--main) solid;
+}
+
+.course-area .view-enrollments-btn:hover {
+    background-color: rgb(241 225 225 / 61%);
+}
+
+
+@media screen and (max-width: 600px) {
+    .course-details .course-title .icon-container {
+        width: 30px;
+        height: 30px;
+        font-size: 0.9rem;
+    }
+
+    .course-details .course-title p {
+        font-size: 1.4rem;
+        font-weight: 600;
+    }
+
+    .course-area {
+        padding-left: 40px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .course-details .course-title .icon-container {
+        width: 25px;
+        height: 25px;
+        font-size: 0.7rem;
+    }
+
+    .course-details .course-title p {
+        font-size: 1.3rem;
+        font-weight: 500;
+    }
+
+    .course-area {
+        padding-left: 30px;
+    }
+
+    .course-content {
+        font-size: 1.1rem;
+    }
+}
