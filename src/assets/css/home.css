@@ -1,0 +1,206 @@
+.home-main-content {
+    padding: 30px;
+}
+
+.home-welcome-banner {
+    background: linear-gradient(135deg, var(--main), #5a0018);
+    color: white;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.home-welcome-banner h1 {
+    font-size: 1.8rem;
+    margin: 0 0 10px 0;
+    font-weight: 700;
+}
+
+.home-welcome-banner p {
+    margin: 0;
+    opacity: 0.9;
+    font-size: 1rem;
+}
+
+.home-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.home-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    padding: 25px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.home-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.home-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.home-card-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--main);
+    font-weight: 600;
+}
+
+.home-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 70%;
+}
+
+.home-card-header i {
+    color: var(--third);
+    font-size: 1.4rem;
+}
+
+.home-card-content p {
+    color: var(--gray);
+    font-size: 0.95rem;
+    margin: 0 0 20px 0;
+    line-height: 1.5;
+}
+
+.home-card-btn {
+    background-color: var(--main);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    box-shadow: 0 3px 8px rgba(128, 0, 32, 0.2);
+    width: fit-content;
+    text-decoration: none;
+}
+
+.home-card-btn:hover {
+    background-color: var(--third);
+    box-shadow: 0 5px 12px rgba(184, 134, 11, 0.3);
+}
+
+/* Announcements Section */
+.home-announcements {
+    margin-top: 30px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    padding: 25px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.home-section-title {
+    font-size: 1.4rem;
+    color: var(--main);
+    margin: 0 0 25px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+}
+
+.home-section-title i {
+    color: var(--third);
+}
+
+.home-announcement-item {
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.home-announcement-item:hover {
+    background-color: rgba(128, 0, 32, 0.03);
+    padding-left: 10px;
+}
+
+.home-announcement-item:last-child {
+    border-bottom: none;
+}
+
+.home-announcement-title {
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--main);
+}
+
+.home-announcement-title i {
+    color: var(--third);
+    font-size: 0.7rem;
+}
+
+.home-announcement-date {
+    font-size: 0.85rem;
+    color: var(--gray);
+    margin: 0 0 10px 0;
+}
+
+.home-announcement-content {
+    font-size: 0.95rem;
+    color: var(--dark);
+    margin: 0;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .home-main-content {
+        padding: 20px 15px;
+    }
+
+    .home-cards-container {
+        grid-template-columns: 1fr;
+    }
+
+    .home-card {
+        padding: 20px;
+    }
+
+    .home-welcome-banner {
+        padding: 20px;
+    }
+
+    .home-welcome-banner h1 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-welcome-banner {
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    .home-announcements {
+        padding: 15px;
+    }
+
+    .home-section-title {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+
+    .home-announcement-item {
+        padding: 12px 0;
+    }
+}

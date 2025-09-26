@@ -3,6 +3,7 @@ import { userSlice } from "./reducers/userSlice";
 import alertReducer  from "./reducers/alertSlice";
 import { coursesSlice } from "./reducers/coursesSlice";
 import { announcementsSlice } from "./reducers/announcementsSlice";
+import { enrolledSlice } from "./reducers/enrolledSlice";
 import loadingReducer from "./reducers/loadingSlice";
 
 export default configureStore({
@@ -11,6 +12,7 @@ export default configureStore({
         alert: alertReducer,
         courses: coursesSlice.reducer,
         announcements: announcementsSlice.reducer,
-        loading: loadingReducer
+        loading: loadingReducer,
+        enrolledCourses: enrolledSlice.reducer
     }
 })
