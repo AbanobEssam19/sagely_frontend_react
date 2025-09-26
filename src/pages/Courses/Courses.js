@@ -5,8 +5,6 @@ export const useCourses = () => {
   const user = useSelector((state) => state.userData.data);
   const courses = useSelector((state) => state.courses.data);
 
-  console.log(courses)
-
   const pageSize = 3;
   const pageCount = Math.ceil(courses.length / pageSize);
 
