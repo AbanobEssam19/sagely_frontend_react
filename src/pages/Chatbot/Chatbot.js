@@ -12,12 +12,19 @@ export const useChatbot = () => {
     const textRef = useRef(null);
     const chat = useRef(null);
 
-    function sendMessage() {
+    async function sendMessage() {
         setMessages((prev) => [...prev, { message: message, bot: false }]);
         textRef.current.value = "";
-        //
-        //
-        setMessages((prev) => [...prev, { message: "Thanks for your message! I’ll get back to you on that.", bot: true }]);
+        const res = await fetch("http://localhost:8075/ask", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ query: message })
+        })
+        const data = await res.json();
+        console.log(data);
+        setMessages((prev) => [...prev, { message: data.answer, bot: true }]);
     }
 
     useEffect(() => {
