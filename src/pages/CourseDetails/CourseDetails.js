@@ -11,6 +11,6 @@ export const useCourseDetails = () => {
 
   const user = useSelector((state) => state.userData.data);
 
-
-  return {course, user};
+  const enrolledCourses = useSelector((state) => state.enrolledCourses.data);
+  return {course, user, enrolledCourses};
 }

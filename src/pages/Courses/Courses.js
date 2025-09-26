@@ -14,41 +14,9 @@ export const useCourses = () => {
   const [currentCourses, setCurrentCourses] = useState([]);
   const [pagination, setPagination] = useState(null);
 
-  const [enrolledCourses, setEnrolledCourses] = useState([]);
   const [showEnrolledOnly, setShowEnrolledOnly] = useState(false);
 
-  useEffect(() => {
-    const fetchEnrolled = async () => {
-      try {
-        const token = localStorage.getItem("token");
-        const res = await fetch("/api/course/enrolled", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        const data = await res.json();
-
-        // normalize to match redux structure
-        const normalized = (data.courses || []).map(c => ({
-          id: c.courseId,
-          name: c.courseName,
-          description: c.description
-        }));
-
-        setEnrolledCourses(normalized);
-
-      } catch (err) {
-        console.error("Failed to fetch enrolled courses", err);
-        setEnrolledCourses([]); // fallback to empty
-      }
-    };
-
-    if (showEnrolledOnly && user?.role === "Student") {
-      fetchEnrolled();
-    }
-  }, [showEnrolledOnly]);
+  const enrolledCourses = useSelector((state) => state.enrolledCourses.data);
 
   useEffect(() => {
     let sourceCourses =

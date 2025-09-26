@@ -5,7 +5,7 @@ import { useCourseDetails } from "./CourseDetails";
 import NotFoundPage from "../NotFound/NotFound";
 
 function CourseDetails() {
-  const { course, user } = useCourseDetails();
+  const { course, user, enrolledCourses } = useCourseDetails();
 
   if (!course) {
     return <NotFoundPage />;
@@ -30,7 +30,7 @@ function CourseDetails() {
           <Link
             className="enroll-btn"
             to={`/courses/${course.id}/enroll`}
-            style={!user || user.role === "Admin" ? { display: "none" } : {}}
+            style={!user || user.role === "Admin" || enrolledCourses.find((c) => c.id == course.id) ? { display: "none" } : {}}
           >
             <i className="fa-solid fa-arrow-right-to-bracket"></i>
             <span>Enroll</span>

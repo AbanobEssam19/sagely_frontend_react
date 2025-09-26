@@ -18,6 +18,10 @@ export const useAnnouncements = () => {
 
   announcements = [...generalAnnouncements];
 
+  const enrolledCourses = useSelector((state) => state.enrolledCourses.data);
+
+  let relatedCourses = [];
+
   if (user && user.role === "Admin") {
     for (let i = 0; i < courseAnnouncements.length; ++i) {
       const course = courses.find(
@@ -26,6 +30,14 @@ export const useAnnouncements = () => {
       if (course.adminid === user.id)
         announcements.push(courseAnnouncements[i]);
     }
+    relatedCourses = courses.filter((course) => course.adminid === user.id);
+  }
+  else if (user && user.role === "Student") {
+    for (let i = 0; i < courseAnnouncements.length; ++i) {
+      if (enrolledCourses.find((course) => course.id == courseAnnouncements[i].courseID))
+        announcements.push(courseAnnouncements[i]);
+    }
+    relatedCourses = enrolledCourses;
   }
 
   announcements = [...announcements].sort(
@@ -85,7 +97,7 @@ export const useAnnouncements = () => {
   return {
     user,
     setSearchValue,
-    courses,
+    relatedCourses,
     courseFilter,
     setCourseFilter,
     currentAnnouncements,
