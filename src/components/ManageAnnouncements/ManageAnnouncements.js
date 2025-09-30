@@ -54,6 +54,21 @@ export const useManageAnnouncements = (announcement) => {
       setTimeout(() => {
         window.location.href = "/announcements";
       }, 600);
+      if (!announcement) {
+        url = formData.course ? `/api/courses/${formData.course}/notify` : `/api/notify/all`;
+        fetch(url, {
+          method: "POST",
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            type: "Announcement",
+            message: `New Announcement: ${formData.title}`,
+          })
+        });
+      }
     }
     else {
       dispatch(showAlert({message: `Faild to ${announcement ? "Edit" : "Create"} Announcement!`, type: "error"}));

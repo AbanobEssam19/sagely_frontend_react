@@ -7,7 +7,7 @@ function ViewSubmission() {
   const { course, user, requirements, submission } = useViewSubmission();
   if (!course || !user || user.role === "Student") return <NotFoundPage />;
 
-  return <EnrollmentManagement course={course} requirements={requirements} submission={submission} />;
+  return <EnrollmentManagement course={course} requirements={requirements} submission={submission} view={true} />;
 }
 
 export default ViewSubmission;

@@ -12,7 +12,7 @@ function Sidebar() {
 }
 
 function SidebarMenu() {
-  const {items, activate, user, logout} = useSidebar();
+  const {items, activate, user, logout, unread} = useSidebar();
 
   return (
     <ul className="sidebar-menu">
@@ -37,8 +37,8 @@ function SidebarMenu() {
         </Link>
       </li>
       <li ref={(e) => items.current[4] = e} onClick={() => activate(4)}>
-        <Link to="">
-          <i className="fas fa-bell"></i> <span>Notifications</span>
+        <Link to="/notifications">
+          <i className="fas fa-bell"></i> <span>Notifications</span> <span style={unread === 0 ? {display: "none"} : {}} className="unread-cnt">{unread}</span>
         </Link>
       </li>
       <li ref={(e) => items.current[5] = e} onClick={() => activate(5)}>

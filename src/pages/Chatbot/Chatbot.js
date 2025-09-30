@@ -23,7 +23,6 @@ export const useChatbot = () => {
             body: JSON.stringify({ query: message })
         })
         const data = await res.json();
-        console.log(data);
         setMessages((prev) => [...prev, { message: data.answer, bot: true }]);
     }
 

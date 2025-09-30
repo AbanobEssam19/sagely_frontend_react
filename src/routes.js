@@ -17,6 +17,7 @@ import CourseDetails from "./pages/CourseDetails/CourseDetails.jsx";
 import Enroll from "./pages/Enroll/Enroll.jsx";
 import EnrollmentRequests from "./pages/EnrollmentRequests/EnrollmentRequests.jsx";
 import ViewSubmission from "./pages/ViewSubmission/ViewSubmission.jsx";
+import Notifications from "./pages/Notifications/Notifications.jsx";
 
 export const router = createBrowserRouter([
   {
@@ -78,6 +79,10 @@ export const router = createBrowserRouter([
       {
         path: "/chatbot",
         element: <Chatbot />
+      },
+      {
+        path: "/notifications",
+        element: <Notifications />
       }
     ],
   },

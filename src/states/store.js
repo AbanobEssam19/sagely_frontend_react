@@ -5,6 +5,7 @@ import { coursesSlice } from "./reducers/coursesSlice";
 import { announcementsSlice } from "./reducers/announcementsSlice";
 import { enrolledSlice } from "./reducers/enrolledSlice";
 import loadingReducer from "./reducers/loadingSlice";
+import { notificationSlice } from "./reducers/notificationSlice";
 
 export default configureStore({
     reducer: {
@@ -13,6 +14,7 @@ export default configureStore({
         courses: coursesSlice.reducer,
         announcements: announcementsSlice.reducer,
         loading: loadingReducer,
-        enrolledCourses: enrolledSlice.reducer
+        enrolledCourses: enrolledSlice.reducer,
+        notifications: notificationSlice.reducer
     }
 })
