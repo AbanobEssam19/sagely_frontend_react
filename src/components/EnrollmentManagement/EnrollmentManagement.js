@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { showAlert } from "../../states/reducers/alertSlice";
 import { useParams } from "react-router-dom";
 
@@ -71,8 +71,12 @@ export function useEnrollmentManagement(requirements) {
         }
     };
 
+    const courses = useSelector((state) => state.courses.data);
+
 
     const accept = async (courseID, studentID) => {
+        const course = courses.find((course) => course.id == courseID);
+
         const token = localStorage.getItem("token");
         const res = await fetch(`/api/course/${courseID}/enroll/${studentID}`, {
             method: "POST",
@@ -80,8 +84,8 @@ export function useEnrollmentManagement(requirements) {
                 Accept: "application/json",
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`
-            }, 
-            body: JSON.stringify({replaceSubmission: true})
+            },
+            body: JSON.stringify({ replaceSubmission: true })
         })
 
         if (res.ok) {
@@ -89,6 +93,18 @@ export function useEnrollmentManagement(requirements) {
             setTimeout(() => {
                 window.location.href = "/courses";
             }, 600);
+            fetch(`/api/students/${studentID}/notify`, {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    type: "Course Enrollment",
+                    message: `Your enrollment request for the course '${course.name}' has been accepted. You can now access the course materials.`,
+                })
+            });
         }
         else {
             dispatch(showAlert({ message: "Failed to Accept Enrollment!", type: "error" }));
@@ -97,6 +113,8 @@ export function useEnrollmentManagement(requirements) {
     }
 
     const reject = async (courseID, studentID) => {
+        const course = courses.find((course) => course.id == courseID);
+
         const token = localStorage.getItem("token");
         const res = await fetch(`/api/course/${courseID}/enroll/${studentID}`, {
             method: "POST",
@@ -104,8 +122,8 @@ export function useEnrollmentManagement(requirements) {
                 Accept: "application/json",
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`
-            }, 
-            body: JSON.stringify({replaceSubmission: false})
+            },
+            body: JSON.stringify({ replaceSubmission: false })
         })
 
         if (res.ok) {
@@ -113,6 +131,18 @@ export function useEnrollmentManagement(requirements) {
             setTimeout(() => {
                 window.location.href = "/courses";
             }, 600);
+            fetch(`/api/students/${studentID}/notify`, {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    type: "Course Enrollment",
+                    message: `Your enrollment request for the course '${course.name}' has been rejected. Please contact the instructor or admin for more details.`,
+                })
+            });
         }
         else {
             dispatch(showAlert({ message: "Failed to Reject Enrollment!", type: "error" }));

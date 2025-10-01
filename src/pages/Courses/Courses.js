@@ -16,11 +16,17 @@ export const useCourses = () => {
 
   const enrolledCourses = useSelector((state) => state.enrolledCourses.data);
 
+  let managedCourses = courses.filter((course) => course.adminid === user.id);
+
   useEffect(() => {
-    let sourceCourses =
-      showEnrolledOnly && user?.role === "Student"
-        ? enrolledCourses
-        : courses;
+    let sourceCourses = courses;
+
+    if (user && user.role === "Admin") {
+      sourceCourses = managedCourses;
+    }
+    else if (showEnrolledOnly) {
+      sourceCourses = enrolledCourses;
+    }
 
     const pageCount = Math.ceil(sourceCourses.length / pageSize);
 

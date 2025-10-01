@@ -3,9 +3,9 @@ import "../../assets/css/enrollmentManagement.css";
 import { useEnrollmentManagement } from "./EnrollmentManagement";
 import Loading from "../../pages/Loading/Loading";
 
-function EnrollmentManagement({ course, requirements, submission }) {
+function EnrollmentManagement({ course, requirements, submission, view }) {
   const { handleFileChange, submit, accept, reject } = useEnrollmentManagement(requirements);
-  if (submission.length === 0)
+  if (view && (!submission || submission.length === 0))
     return <Loading />;
   return (
     <div className="enroll-course" style={!submission ? {borderTop: "6px solid var(--main)"} : {}}>
@@ -14,9 +14,9 @@ function EnrollmentManagement({ course, requirements, submission }) {
         style={!submission ? { display: "none" } : {}}
       >
         
-        <h3>{submission ? submission[0].studentName : ""}</h3>
+        <h3>{view ? submission[0].studentName : ""}</h3>
         <p className="student-email">
-          {submission ? submission[0].studentEmail : ""}
+          {view ? submission[0].studentEmail : ""}
         </p>
       </div>
       <div className="enroll-container">
@@ -31,7 +31,7 @@ function EnrollmentManagement({ course, requirements, submission }) {
               key={req.id}
               requirement={req}
               change={handleFileChange}
-              show={submission}
+              show={view && submission}
             />
           ))}
         </div>
@@ -39,21 +39,21 @@ function EnrollmentManagement({ course, requirements, submission }) {
           <button
             className="submit-btn"
             onClick={submit}
-            style={submission ? { display: "none" } : {}}
+            style={view ? { display: "none" } : {}}
           >
             {requirements.length > 0 ? "Submit Requirements" : "Enroll Now"}
           </button>
           <button
             className="submit-btn"
             onClick={() => accept(course.id, submission[0].studentID)}
-            style={!submission ? { display: "none" } : {}}
+            style={!view ? { display: "none" } : {}}
           >
             Approve Enrollment
           </button>
           <button
             className="submit-btn reject-btn"
             onClick={() => reject(course.id, submission[0].studentID)}
-            style={!submission ? { display: "none" } : {}}
+            style={!view ? { display: "none" } : {}}
           >
             Reject Submission
           </button>
@@ -73,7 +73,7 @@ function RequirementCard({ requirement, change, show }) {
         onChange={(e) => change(requirement.id, e.target.files[0])}
         style={show ? { display: "none" } : {}}
       />
-      <a href={show.find((s) => s.requirementTitle === requirement.title).fileUrl} target="_blank" style={!show ? { display: "none" } : {}}><span>View Document</span></a>
+      <a href={show && show.find((s) => s.requirementTitle === requirement.title).fileUrl} target="_blank" style={!show ? { display: "none" } : {}}><span>View Document</span></a>
     </div>
   );
 }

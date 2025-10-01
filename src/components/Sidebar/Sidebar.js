@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../../states/reducers/userSlice";
@@ -50,11 +50,27 @@ export const useSidebar = () => {
       activate(1);
     else if (location.pathname.includes("course"))
       activate(2);
+    else if (location.pathname.includes("notification"))
+      activate(4);
     else if (location.pathname.includes("chatbot"))
       activate(5);
     else if (location.pathname.includes("profile"))
       activate(6);
   }, [location])
 
-  return {items, activate, user, logout};
+  const notification = useSelector((state) => state.notifications.data);
+
+  const [unread, setUnread] = useState(0);
+
+  useEffect(() => {
+    let count = 0;
+    notification.forEach((item) => {
+      if (item.status === "Unread") {
+        count++;
+      }
+    });
+    setUnread(count);
+  }, [notification]);
+
+  return {items, activate, user, logout, unread};
 }

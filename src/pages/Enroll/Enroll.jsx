@@ -8,7 +8,7 @@ function Enroll() {
   if (!course || !user || user.role === "Admin")
     return <NotFoundPage />;
   return (
-    <EnrollmentManagement course={course} requirements={requirements} />
+    <EnrollmentManagement course={course} requirements={requirements} view={false} />
   )
 }
 

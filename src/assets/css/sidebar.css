@@ -57,6 +57,20 @@
     border-left: 4px solid var(--main);
 }
 
+.sidebar-menu .unread-cnt {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    border-radius: 25px;
+    background-color: var(--main);
+    color: var(--second);
+    margin-left: auto;
+    margin-right: 15px;
+}
+
 @media screen and (max-width: 768px) {
     .sidebar {
         width: 50px;
@@ -81,5 +95,15 @@
 
     .sidebar-menu li i {
         margin-right: 0;
+    }
+
+    .sidebar-menu .unread-cnt {
+        position: absolute;
+        top: 8px;
+        right: 7px;
+        width: 16px;
+        height: 16px;
+        font-size: 0.7rem;
+        margin: 0; /* reset margin */
     }
 }

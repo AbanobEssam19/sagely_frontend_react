@@ -1,7 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export const fetchEnrolled = createAsyncThunk("enrolled/fetchEnrolled", async (token) => {
-    const res = await fetch("/api/course/enrolled", {
+export const fetchNotifications = createAsyncThunk("notification/fetchNotifications", async (token) => {
+    if (!token) {
+        return [];
+    }
+    const res = await fetch("/api/notifications/me", {
         method: "GET",
         headers: {
             "Accept": "application/json",
@@ -13,10 +16,6 @@ export const fetchEnrolled = createAsyncThunk("enrolled/fetchEnrolled", async (t
         return [];
     }
     const data = await res.json();
-    const normalized = (data.courses || []).map(c => ({
-        id: c.courseId,
-        name: c.courseName,
-        description: c.description
-    }));
-    return normalized;
+    return data;
+        
 })
