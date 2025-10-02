@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { showAlert } from "../../states/reducers/alertSlice";
 
-function useInformation() {
+function useInformation(setLoading) {
   const user = useSelector((state) => state.userData.data);
   const phoneRef = useRef(null);
   const [phone, setPhone] = useState(user.phoneNumber);
@@ -25,6 +25,8 @@ function useInformation() {
 
     const token = localStorage.getItem("token");
 
+    setLoading(true);
+
     const res = await fetch("/api/profile/update", {
       method: "PUT",
       headers: {
@@ -36,6 +38,8 @@ function useInformation() {
         phoneNumber: phone,
       }),
     });
+
+    setLoading(false);
 
     if (res.ok) {
       dispatch(
@@ -60,10 +64,7 @@ function useInformation() {
       phoneRef.current.disabled = false;
       phoneRef.current.style.borderBottom = "1px solid #777";
     } else {
-      if (await saveInfo()) {
-        editBtn.current.innerHTML = `<i class="fas fa-edit"></i>Edit`;
-        phoneRef.current.disabled = true;
-      }
+      await saveInfo();
     }
   }
   
@@ -78,7 +79,7 @@ function useInformation() {
   }
 }
 
-function useResetPassword() {
+function useResetPassword(setLoading) {
   const [showModal, setShowModal] = useState(false);
 
   const dispatch = useDispatch();
@@ -125,6 +126,8 @@ function useResetPassword() {
 
     const token = localStorage.getItem("token");
 
+    setLoading(true);
+
     const res = await fetch("/api/change-password", {
       method: "POST",
       headers: {
@@ -137,6 +140,8 @@ function useResetPassword() {
         new_password: newPassword,
       }),
     });
+
+    setLoading(false);
 
     if (res.ok) {
       dispatch(
@@ -164,7 +169,7 @@ function useResetPassword() {
   }
 }
 
-function useNotificationPreferences() {
+function useNotificationPreferences(setLoading) {
   const [showModal, setShowModal] = useState(false);
 
   const user = useSelector((state) => state.userData.data);
@@ -180,6 +185,8 @@ function useNotificationPreferences() {
   async function changeNotification() {
     const token = localStorage.getItem("token");
 
+    setLoading(true);
+
     const res = await fetch("/api/profile/update", {
       method: "PUT",
       headers: {
@@ -192,6 +199,8 @@ function useNotificationPreferences() {
         siteNotificationPreferences: siteNotification,
       }),
     });
+
+    setLoading(false);
 
     if (res.ok) {
       dispatch(

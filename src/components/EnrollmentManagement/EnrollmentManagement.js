@@ -14,6 +14,8 @@ export function useEnrollmentManagement(requirements) {
 
     const dispatch = useDispatch();
 
+    const [loading, setLoading] = useState(false);
+
     const submit = async () => {
         for (const req of requirements) {
             if (!files[req.id]) {
@@ -23,6 +25,8 @@ export function useEnrollmentManagement(requirements) {
         }
 
         const token = localStorage.getItem("token");
+
+        setLoading(true);
 
         for (const req of requirements) {
             const formData = new FormData();
@@ -52,6 +56,7 @@ export function useEnrollmentManagement(requirements) {
                     Authorization: `Bearer ${token}`
                 }
             });
+            setLoading(false);
             if (res.ok) {
                 dispatch(showAlert({ message: "Enrolled Successfully.", type: "success" }));
                 setTimeout(() => {
@@ -64,6 +69,7 @@ export function useEnrollmentManagement(requirements) {
             }
         }
         else {
+            setLoading(false);
             dispatch(showAlert({ message: "Requirements Submitted Successfully.", type: "success" }));
             setTimeout(() => {
                 window.location.href = "/courses";
@@ -78,6 +84,7 @@ export function useEnrollmentManagement(requirements) {
         const course = courses.find((course) => course.id == courseID);
 
         const token = localStorage.getItem("token");
+        setLoading(true);
         const res = await fetch(`/api/course/${courseID}/enroll/${studentID}`, {
             method: "POST",
             headers: {
@@ -87,6 +94,7 @@ export function useEnrollmentManagement(requirements) {
             },
             body: JSON.stringify({ replaceSubmission: true })
         })
+        setLoading(false);
 
         if (res.ok) {
             dispatch(showAlert({ message: "Enrollment Accepted.", type: "success" }));
@@ -116,6 +124,7 @@ export function useEnrollmentManagement(requirements) {
         const course = courses.find((course) => course.id == courseID);
 
         const token = localStorage.getItem("token");
+        setLoading(true);
         const res = await fetch(`/api/course/${courseID}/enroll/${studentID}`, {
             method: "POST",
             headers: {
@@ -125,6 +134,8 @@ export function useEnrollmentManagement(requirements) {
             },
             body: JSON.stringify({ replaceSubmission: false })
         })
+
+        setLoading(false);
 
         if (res.ok) {
             dispatch(showAlert({ message: "Enrollment Rejected.", type: "success" }));
@@ -150,5 +161,5 @@ export function useEnrollmentManagement(requirements) {
         }
     }
 
-    return { handleFileChange, submit, accept, reject };
+    return { handleFileChange, submit, accept, reject, loading };
 }

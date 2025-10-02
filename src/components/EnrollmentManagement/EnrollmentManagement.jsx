@@ -4,8 +4,8 @@ import { useEnrollmentManagement } from "./EnrollmentManagement";
 import Loading from "../../pages/Loading/Loading";
 
 function EnrollmentManagement({ course, requirements, submission, view }) {
-  const { handleFileChange, submit, accept, reject } = useEnrollmentManagement(requirements);
-  if (view && (!submission || submission.length === 0))
+  const { handleFileChange, submit, accept, reject, loading } = useEnrollmentManagement(requirements);
+  if (view && (!submission || submission.length === 0) || loading)
     return <Loading />;
   return (
     <div className="enroll-course" style={!submission ? {borderTop: "6px solid var(--main)"} : {}}>

@@ -64,6 +64,8 @@ function useRightSide() {
     e.preventDefault();
     if (!checkEmail() || !checkPassword()) return;
 
+    dispatch(setLoading(true));
+
     const res = await fetch("/api/login", {
       method: "POST",
       headers: {
@@ -75,6 +77,7 @@ function useRightSide() {
         password: password,
       }),
     });
+    dispatch(setLoading(false));
     if (res.ok) {
       const data = await res.json();
       localStorage.setItem("token", data.token);

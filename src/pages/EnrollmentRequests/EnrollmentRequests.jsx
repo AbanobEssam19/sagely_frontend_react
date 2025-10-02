@@ -3,11 +3,15 @@ import "../../assets/css/enrollmentRequests.css";
 import { useEnrollmentRequests } from "./EnrollmentRequests";
 import NotFoundPage from "../NotFound/NotFound";
 import { Link } from "react-router-dom";
+import Loading from "../Loading/Loading.jsx";
 
 function EnrollmentRequests() {
-  const { course, user, submissions } = useEnrollmentRequests();
+  const { course, user, submissions, loading } = useEnrollmentRequests();
 
   if (!course || !user || user.role === "Student") return <NotFoundPage />;
+
+  if (loading)
+    return <Loading />;
 
   return (
     <div className="enrollment-requests">

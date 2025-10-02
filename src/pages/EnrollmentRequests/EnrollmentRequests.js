@@ -13,8 +13,11 @@ export function useEnrollmentRequests() {
 
     const [submissions, setSubmissions] = useState([]);
 
+    const [loading, setLoading] = useState(false);
+
     const subFetch = async () => {
         const token = localStorage.getItem("token");
+        setLoading(true);
         const res = await fetch(`/api/requirements/${id}/course/submissions`, {
             method: "GET",
             headers: {
@@ -23,6 +26,7 @@ export function useEnrollmentRequests() {
                 Authorization: `Bearer ${token}`,
             }
         });
+        setLoading(false);
         if (res.ok) {
             const data = await res.json();
             const uniqueSubmissions = Array.from(
@@ -38,5 +42,5 @@ export function useEnrollmentRequests() {
             subFetch();
     }, [course])
 
-    return { course, user, submissions };
+    return { course, user, submissions, loading };
 }

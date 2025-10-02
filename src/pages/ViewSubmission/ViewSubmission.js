@@ -16,9 +16,12 @@ export const useViewSubmission = () => {
 
     const [submission, setSubmission] = useState([]);
 
+    const [loading, setLoading] = useState(false);
+
     const reqFetch = async () => {
         if (!course) return;
         const token = localStorage.getItem("token");
+        setLoading(true);
         const res = await fetch(`/api/courses/${course.id}/requirements`, {
             method: "GET",
             headers: {
@@ -27,6 +30,7 @@ export const useViewSubmission = () => {
                 "Authorization": `Bearer ${token}`
             }
         });
+        setLoading(false);
         if (res.ok) {
             const data = await res.json();
             setRequirements(data);
@@ -35,6 +39,7 @@ export const useViewSubmission = () => {
 
     const subFetch = async () => {
         const token = localStorage.getItem("token");
+        setLoading(true);
         const res = await fetch(`/api/requirements/${courseId}/course/submissions`, {
             method: "GET",
             headers: {
@@ -43,6 +48,7 @@ export const useViewSubmission = () => {
                 "Authorization": `Bearer ${token}`
             }
         });
+        setLoading(false);
         if (res.ok) {
             const data = await res.json();
             const req = data.submissions.filter((r) => r.studentID == studentId);
@@ -57,5 +63,5 @@ export const useViewSubmission = () => {
     }, [course]);
 
 
-    return { course, user, requirements, submission };
+    return { course, user, requirements, submission, loading };
 }

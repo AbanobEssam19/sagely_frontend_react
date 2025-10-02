@@ -23,6 +23,8 @@ export const useManageAnnouncements = (announcement) => {
 
   const dispatch = useDispatch();
 
+  const [loading, setLoading] = useState(false);
+
   async function submit(e) {
     e.preventDefault();
     if (formData.title === "" || formData.content === "" || formData.category === "") {
@@ -34,6 +36,7 @@ export const useManageAnnouncements = (announcement) => {
     let url = "/api/announcements";
     if (announcement)
         url += `/${announcement.id}`;
+    setLoading(true);
     const res = await fetch(url, {
       method: announcement ? "PUT" : "POST",
       headers: {
@@ -48,6 +51,8 @@ export const useManageAnnouncements = (announcement) => {
         courseID: formData.course
       }),
     });
+
+    setLoading(false);
 
     if (res.ok) {
       dispatch(showAlert({message: `Announcement ${announcement ? "Edited" : "Created"} Successfuly`, type: "success"}));
@@ -80,6 +85,7 @@ export const useManageAnnouncements = (announcement) => {
 
   const deleteAnnouncement = async () => {
     const token = localStorage.getItem('token');
+    setLoading(true);
     const res = await fetch(`/api/announcements/${announcement.id}`, {
         method: "DELETE",
         headers: {
@@ -88,6 +94,8 @@ export const useManageAnnouncements = (announcement) => {
         "Authorization": `Bearer ${token}`
       }
     });
+
+    setLoading(false);
 
     if (res.ok) {
       dispatch(showAlert({message: "Announcement Deleted Successfuly", type: "success"}));
@@ -110,5 +118,6 @@ export const useManageAnnouncements = (announcement) => {
     setShowConfirm,
     showConfirm,
     deleteAnnouncement,
+    loading
   };
 }

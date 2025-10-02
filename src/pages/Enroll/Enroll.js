@@ -14,8 +14,11 @@ export const useEnroll = () => {
 
     const [requirements, setRequirements] = useState([]);
 
+    const [loading, setLoading] = useState(false);
+
     const reqFetch = async () => {
         if (!course) return;
+        setLoading(true);
         const token = localStorage.getItem("token");
         const res = await fetch(`/api/courses/${course.id}/requirements`, {
             method: "GET",
@@ -25,6 +28,7 @@ export const useEnroll = () => {
                 "Authorization": `Bearer ${token}`
             }
         });
+        setLoading(false);
         if (res.ok) {
             const data = await res.json();
             setRequirements(data);
@@ -37,5 +41,5 @@ export const useEnroll = () => {
     }, [course]);
 
 
-    return { course, user, requirements };
+    return { course, user, requirements, loading };
 }

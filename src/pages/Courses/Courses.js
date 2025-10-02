@@ -16,7 +16,7 @@ export const useCourses = () => {
 
   const enrolledCourses = useSelector((state) => state.enrolledCourses.data);
 
-  let managedCourses = courses.filter((course) => course.adminid === user.id);
+  let managedCourses = user && user.role === "Admin" ? courses.filter((course) => course.adminid === user.id) : [];
 
   useEffect(() => {
     let sourceCourses = courses;
