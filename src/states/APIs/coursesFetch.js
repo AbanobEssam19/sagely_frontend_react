@@ -8,6 +8,9 @@ export const fetchCourses = createAsyncThunk("courses/fetchCourses", async () =>
             "Content-Type": "application/json"
         }
     })
+    if (!res.ok) {
+        return [];
+    }
     const data = await res.json();
     return data.courses;
 })

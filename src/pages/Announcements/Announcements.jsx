@@ -9,7 +9,7 @@ function Announcements() {
   const {
     user,
     setSearchValue,
-    courses,
+    relatedCourses,
     courseFilter,
     setCourseFilter,
     currentAnnouncements,
@@ -49,7 +49,7 @@ function Announcements() {
             options={[
               { value: 0, label: "All Courses" },
               { value: null, label: "General" },
-              ...courses.map((course) => ({
+              ...relatedCourses.map((course) => ({
                 value: course.id,
                 label: course.name,
               })),

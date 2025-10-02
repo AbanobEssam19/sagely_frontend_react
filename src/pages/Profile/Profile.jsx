@@ -1,27 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../assets/css/profile.css";
 import { useSelector } from "react-redux";
 import { useInformation, useNotificationPreferences, useResetPassword } from "./Profile";
-import { Navigate } from "react-router-dom";
+import NotFoundPage from "../NotFound/NotFound";
+import Loading from "../Loading/Loading";
 
 function Profile() {
   const user = useSelector((state) => state.userData.data);
 
+  const [loading, setLoading] = useState(false);
+
   if (!user) 
-    return <Navigate to="/error" replace />;
+    return <NotFoundPage />;
+
+  if (loading)
+    return <Loading />;
 
   return (
     <div className="profile">
       <div className="profile-header">
         <p>{user.name.split(" ").slice(0, 2).join(" ")}</p>
       </div>
-      <Information />
-      <Settings />
+      <Information setLoading={setLoading} />
+      <Settings setLoading={setLoading} />
     </div>
   );
 }
 
-function Information() {
+function Information({setLoading}) {
   const {
     editInfo,
     editBtn,
@@ -30,7 +36,7 @@ function Information() {
     setPhone,
     checkPhone,
     errorRef
-  } = useInformation();
+  } = useInformation(setLoading);
 
   return (
     <div className="section-container">
@@ -77,7 +83,7 @@ function Information() {
   );
 }
 
-function Settings() {
+function Settings({setLoading}) {
   return (
     <div className="section-container">
       <div className="section-header">
@@ -86,14 +92,14 @@ function Settings() {
         </p>
       </div>
       <form>
-        <ResetPassword />
-        <NotificationPreferences />
+        <ResetPassword setLoading={setLoading} />
+        <NotificationPreferences setLoading={setLoading} />
       </form>
     </div>
   );
 }
 
-function ResetPassword() {
+function ResetPassword({setLoading}) {
   const {
     setShowModal,
     showModal,
@@ -102,7 +108,7 @@ function ResetPassword() {
     setNewPassword,
     setConfirmPassword,
     ChangePassword
-  } = useResetPassword();
+  } = useResetPassword(setLoading);
 
   return (
     <div className="form-field reset-password">
@@ -177,7 +183,7 @@ function ResetPassword() {
   );
 }
 
-function NotificationPreferences() {
+function NotificationPreferences({setLoading}) {
   const {
     email,
     site,
@@ -186,7 +192,7 @@ function NotificationPreferences() {
     setEmailNotification,
     setSiteNotification,
     changeNotification
-  } = useNotificationPreferences();
+  } = useNotificationPreferences(setLoading);
 
   return (
     <div className="form-field notification-field">

@@ -5,7 +5,7 @@ export const coursesSlice = createSlice({
     name: "courses",
 
     initialState: {
-        data: null
+        data: []
     },
 
     reducers: {

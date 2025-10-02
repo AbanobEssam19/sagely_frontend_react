@@ -8,6 +8,9 @@ export const fetchAnnouncements = createAsyncThunk("announcements/fetchAnnouncem
             "Content-Type": "application/json"
         }
     })
+    if (!res.ok) {
+        return [];
+    }
     const data = await res.json();
     return data.announcements;
 })

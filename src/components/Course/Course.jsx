@@ -10,8 +10,8 @@ function Course({course}) {
         <p className='course-title'>{course.name}</p>
         <p className='course-description'>{course.description}</p>
         <div className='btn-container'>
-          <Link to="/"><i className="far fa-eye"></i>View Details</Link>
-          <Link to="/" style={!user || user.role !== "Admin" ? {display: "none"} : {}}><i className="fas fa-edit"></i>Edit Course</Link>
+          <Link to={`/courses/${course.id}`}><i className="far fa-eye"></i>View Details</Link>
+          <Link to={`/courses/${course.id}/edit`} style={!user || user.role !== "Admin" ? {display: "none"} : {}}><i className="fas fa-edit"></i>Edit Course</Link>
         </div>
     </div>
   )

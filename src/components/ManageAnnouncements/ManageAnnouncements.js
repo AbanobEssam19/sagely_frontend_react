@@ -23,6 +23,8 @@ export const useManageAnnouncements = (announcement) => {
 
   const dispatch = useDispatch();
 
+  const [loading, setLoading] = useState(false);
+
   async function submit(e) {
     e.preventDefault();
     if (formData.title === "" || formData.content === "" || formData.category === "") {
@@ -34,6 +36,7 @@ export const useManageAnnouncements = (announcement) => {
     let url = "/api/announcements";
     if (announcement)
         url += `/${announcement.id}`;
+    setLoading(true);
     const res = await fetch(url, {
       method: announcement ? "PUT" : "POST",
       headers: {
@@ -49,11 +52,28 @@ export const useManageAnnouncements = (announcement) => {
       }),
     });
 
+    setLoading(false);
+
     if (res.ok) {
       dispatch(showAlert({message: `Announcement ${announcement ? "Edited" : "Created"} Successfuly`, type: "success"}));
       setTimeout(() => {
         window.location.href = "/announcements";
       }, 600);
+      if (!announcement) {
+        url = formData.course ? `/api/courses/${formData.course}/notify` : `/api/notify/all`;
+        fetch(url, {
+          method: "POST",
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            type: "Announcement",
+            message: `New Announcement: ${formData.title}`,
+          })
+        });
+      }
     }
     else {
       dispatch(showAlert({message: `Faild to ${announcement ? "Edit" : "Create"} Announcement!`, type: "error"}));
@@ -65,6 +85,7 @@ export const useManageAnnouncements = (announcement) => {
 
   const deleteAnnouncement = async () => {
     const token = localStorage.getItem('token');
+    setLoading(true);
     const res = await fetch(`/api/announcements/${announcement.id}`, {
         method: "DELETE",
         headers: {
@@ -73,6 +94,8 @@ export const useManageAnnouncements = (announcement) => {
         "Authorization": `Bearer ${token}`
       }
     });
+
+    setLoading(false);
 
     if (res.ok) {
       dispatch(showAlert({message: "Announcement Deleted Successfuly", type: "success"}));
@@ -95,5 +118,6 @@ export const useManageAnnouncements = (announcement) => {
     setShowConfirm,
     showConfirm,
     deleteAnnouncement,
+    loading
   };
 }

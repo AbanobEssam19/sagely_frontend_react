@@ -87,7 +87,6 @@ function RightSide() {
         </p>
 
         <div className="forgot">
-          <Link to="#">Forgot password?</Link>
         </div>
 
         <button type="submit" onClick={login}>Login</button>
